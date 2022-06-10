@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">InquilinOs</string>
+    <string name="contact">Contact us</string>
+    <string name="lang">Select your language</string>
+    <string name="info">Touristic information</string>
+    <string name="services">Services</string>
+    <string name="about">About us</string>
+</resources>

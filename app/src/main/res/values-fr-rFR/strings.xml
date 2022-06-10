@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InquilinOs</string>
+    <string name="contact">Contactez-nous</string>
+    <string name="lang">Choisissez votre langue</string>
+    <string name="info">Information Touristique</string>
+    <string name="services">Services</string>
+    <string name="about">À propos de nous</string>
+</resources>
