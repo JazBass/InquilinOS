@@ -3,34 +3,43 @@ package com.mycityhome.InquilinOs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.Locale;
+import java.util.List;
 
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     Toolbar toolbar;
     LanguageManager languageManager;
-    Button btnContact, btnInfo;
+    Button btnContact, btnInfo, btnAbout, btnServices;
+    String language;
+    Recorder recorder;
+    int PERMISSIONS_CODE = 1;
+    String[] Permissions = {
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,28 +49,38 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerLayout);
         btnContact = findViewById(R.id.btnContact);
-        btnContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, WppWeb.class);
-                startActivity(i);
-            }
-        });
-        btnInfo = findViewById(R.id.btnInfo);
-        btnInfo.setOnClickListener(new View.OnClickListener() {
+        btnAbout = findViewById(R.id.btnAbout);
+        btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+        btnServices = findViewById(R.id.btnServices);
+        btnServices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recorder = new Recorder(MainActivity.this);
+                recorder.start();
+            }
+        });
+        btnContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/34633335208?text=Hola"));
+                startActivity(i);
             }
         });
         setToolBar();
         setListener();
-        languageManager = new LanguageManager(this);
+        if (!hasPermissions(Permissions)) {
+            requestPermissions();
+        }
     }
 
+    /*Barra superior con menu desplegable para cambiar idiomas*/
     private void setListener() {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            String language;
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -77,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 languageManager.updateLanguge(language);
-                recreate();
                 return false;
             }
         });
@@ -85,8 +103,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setToolBar() {
         setSupportActionBar(toolbar);
-        if (getSupportActionBar()!=null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            //TODO: mejorar el tamaño del logo de idioma
             getSupportActionBar().setDisplayUseLogoEnabled(true);
             getSupportActionBar().setLogo(R.drawable.logomch);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_lang);
@@ -95,20 +114,42 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             drawerLayout.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
     }
+    //TODO: Cambio de string utilizado con distintos idiomas!
+
+    private boolean hasPermissions(String[] permissions) {
+        return EasyPermissions.hasPermissions(this, permissions);
+    }
+
+    private void requestPermissions() {
+        EasyPermissions.requestPermissions(this, "Esta aplicación necestita este " +
+                        "permiso para funcionar correctamente", PERMISSIONS_CODE,
+                Manifest.permission.RECORD_AUDIO);
+        EasyPermissions.requestPermissions(this, "Aceptar este permiso", PERMISSIONS_CODE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    }
+
+    /**************Solicitando Permisos**************/
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        Toast.makeText(this, "Permiso Aceptado", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            new AppSettingsDialog.Builder(this).build().show();
+        } else {
+            requestPermissions();
+        }
+    }
 }
-//Para enviar WhatsApp a través del package
-/*Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_TEXT, "¡Hola!");
-                intent.setType("text/plain");
-                intent.setPackage("com.whatsapp.w4b");
-                Intent sharedIntent = Intent.createChooser(intent, null);
-                try {
-                    startActivity(sharedIntent);
-                } catch (android.content.ActivityNotFoundException ex) {
-                    ex.printStackTrace();
-                }*/
