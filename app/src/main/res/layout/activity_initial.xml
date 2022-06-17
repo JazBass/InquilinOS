@@ -41,22 +41,11 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/btnContact"
-                    android:layout_width="163dp"
-                    android:layout_height="207dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/round_button_green"
-                    android:textColor="@color/orangeMC"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-                <Button
                     android:id="@+id/btnInfo"
-                    android:layout_width="163dp"
+                    android:layout_width="185dp"
                     android:layout_height="207dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/round_button_blue"
                     android:text="@string/info"
                     android:textColor="@color/orangeMC"
@@ -80,24 +69,62 @@
                     android:id="@+id/btnServices"
                     android:layout_width="163dp"
                     android:layout_height="241dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/round_button_orange"
                     android:text="@string/services"
                     android:textColor="@color/orangeMC"
-                    app:layout_constraintBottom_toTopOf="@+id/btnContact"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button7" />
 
                 <Button
                     android:id="@+id/btnAbout"
                     android:layout_width="163dp"
-                    android:layout_height="241dp"
-                    android:layout_marginStart="24dp"
+                    android:layout_height="245dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/round_button_orange"
                     android:text="@string/about"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtDcbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toTopOf="@+id/button7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!--
+                <Button
+                    android:id="@+id/btnContact"
+                    android:layout_width="163dp"
+                    android:layout_height="207dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/round_button_blue"
+                    android:drawableStart="@drawable/wpbutton"
+                    android:textColor="@color/orangeMC"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+                -->
+
+                <ImageButton
+                    android:id="@+id/btnContact"
+                    android:layout_width="185dp"
+                    android:layout_height="207dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/round_button_blue"
+                    android:contentDescription="TODO"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnServices"
+                    app:srcCompat="@drawable/wpbutton" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
