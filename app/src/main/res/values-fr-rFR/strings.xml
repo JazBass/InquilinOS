@@ -6,4 +6,5 @@
     <string name="info">Information Touristique</string>
     <string name="services">Services</string>
     <string name="about">À propos de nous</string>
+    <string name="newLanguage">Nouvelle langue sélectionnée: Français</string>
 </resources>

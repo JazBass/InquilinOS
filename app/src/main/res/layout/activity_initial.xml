@@ -26,9 +26,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:background="@color/blueBack"
-                android:paddingEnd="55dp"
                 android:collapseIcon="@drawable/ic_menu_lang"
                 android:elevation="4dp"
+                android:paddingEnd="55dp"
                 android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,14 +126,26 @@
                     app:layout_constraintTop_toBottomOf="@+id/btnServices"
                     app:srcCompat="@drawable/wpbutton" />
 
+                <TextView
+                    android:id="@+id/txtPrueba"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toTopOf="@+id/txtDcbl"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:menu="@menu/menu"
-            app:headerLayout="@layout/nav_header" />
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/menu" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

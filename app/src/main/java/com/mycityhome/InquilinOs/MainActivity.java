@@ -8,8 +8,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,7 +27,9 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.List;
+import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -43,9 +47,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     Toolbar toolbar;
     Button btnInfo, btnAbout, btnServices;
     ImageButton btnContact;
-    TextView txtDcbl;
-    String language;
-    LanguageManager languageManager;
+    TextView txtDcbl, txtSelectLanguage, txtPrueba;
     /*-------------------------Permisos----------------------------*/
     int PERMISSIONS_CODE = 1;
     String[] Permissions = {
@@ -62,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     final Runnable updater = () -> measureDecibels();
     Thread runner;
     boolean isCounting;
+    /*------------------Cambio de Idioma-----------------*/
+    Context context;
+    Resources resources;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +79,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         drawerLayout = findViewById(R.id.drawerLayout);
         btnContact = findViewById(R.id.btnContact);
         btnAbout = findViewById(R.id.btnAbout);
+        btnInfo = findViewById(R.id.btnInfo);
         btnServices = findViewById(R.id.btnServices);
         txtDcbl = findViewById(R.id.txtDcbl);
+        txtSelectLanguage = findViewById(R.id.txtSelectLanguage);
+        txtPrueba = findViewById(R.id.txtPrueba);
 
         /*-----------Botones listeners-----------*/
         btnAbout.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                 while (runner != null) {
                     try {
                         Thread.sleep(1000);
-                        //Log.i("Noise", "Tock");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -126,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         }
     }
 
-    /*Barra superior con menu desplegable para cambiar idiomas*/
+    /*----------------Barra superior con menu desplegable----------------*/
     private void setListener() {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
@@ -134,19 +141,30 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.french:
-                        language = "fr";
+                        context = LanguageManager.setLocale(MainActivity.this, "fr");
+                        resources = context.getResources();
                         break;
                     case R.id.english:
-                        language = "en";
+                        context = LanguageManager.setLocale(MainActivity.this, "en");
+                        resources = context.getResources();
                         break;
                     case R.id.spanish:
-                        language = "es";
+                        context = LanguageManager.setLocale(MainActivity.this, "es");
+                        resources = context.getResources();
                         break;
                 }
-                languageManager.updateLanguge(language);
+                refreshLanguage();
+                drawerLayout.close();
+                Toast.makeText(MainActivity.this, resources.getString(R.string.newLanguage), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
+    }
+
+    public void refreshLanguage(){
+        btnAbout.setText(resources.getString(R.string.about));
+        btnInfo.setText(resources.getString(R.string.info));
+        btnServices.setText(resources.getString(R.string.services));
     }
 
     private void setToolBar() {
@@ -206,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         super.onResume();
         startRecorder();
     }
+    /*----------------------Comenzar a medir decibelios ----------------------*/
 
     public void onPause() {
         super.onPause();
@@ -279,6 +298,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                 txtDcbl.setText(String.format("%.2f", decibels) + " DB");
                 decibelsCounter = new double[60];
                 double dbl = convertdDb(mRecorder.getMaxAmplitude());
+                /*
                 while (dbl >= 30 && isCounting) {
                     for (int i = 0; i < decibelsCounter.length; i++) {
                         decibelsCounter[i]=decibels;
@@ -287,14 +307,15 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+
                         if (i == 59) {
                             sendDecibArray(decibelsCounter);
                         }
                         dbl = convertdDb(mRecorder.getMaxAmplitude());
                         Log.i("decib", "decibeles: "+dbl);
+
                     }
-                    Toast.makeText(this, "Aqui hay fiesta", Toast.LENGTH_LONG).show();
-                }
+                }*/
                 //startCounting();
             }
         }
@@ -303,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     }
 
     private void sendDecibArray(double[] db){
-        
+        Toast.makeText(this, "Aqui hay fiesta", Toast.LENGTH_LONG).show();
     }
 
    /*
@@ -336,7 +357,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                     assert response.body() != null;
                     String res = response.body().string();
                     if (res.compareTo("{\"code\":0}") == 0) {
-                        res = "Puerta Abierta";
+                        res = "Interruptor luz";
                     }
                     Log.d("OKHTTP", "onResponse: " + res);
                     Intent intent = new Intent();

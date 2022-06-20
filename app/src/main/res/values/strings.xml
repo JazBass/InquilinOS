@@ -5,4 +5,5 @@
     <string name="info">Touristic information</string>
     <string name="services">Services</string>
     <string name="about">About us</string>
+    <string name="newLanguage">New language selected: English</string>
 </resources>
