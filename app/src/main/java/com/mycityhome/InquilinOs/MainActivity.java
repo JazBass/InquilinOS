@@ -7,7 +7,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,7 +17,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -27,9 +25,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.List;
-import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -41,30 +37,30 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
-    /*----------------------botonos y vistas----------------------*/
+    /*----------------------Buttons and views----------------------*/
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     Toolbar toolbar;
     Button btnInfo, btnAbout, btnServices;
     ImageButton btnContact;
-    TextView txtDcbl, txtSelectLanguage, txtPrueba;
-    /*-------------------------Permisos----------------------------*/
+    TextView txtDecibels, txtSelectLanguage;
+    /*-------------------------Permissions----------------------------*/
     int PERMISSIONS_CODE = 1;
     String[] Permissions = {
             Manifest.permission.RECORD_AUDIO,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-    /*---------------Medidor de decibelios---------------*/
+    /*---------------Decibels measure---------------*/
     static final private double EMA_FILTER = 0.6;
     private static double mEMA = 0.0;
     MediaRecorder mRecorder;
     double decibels;
     double[] decibelsCounter;
     final Handler mHandler = new Handler();
-    final Runnable updater = () -> measureDecibels();
+    final Runnable updater = this::measureDecibels;
     Thread runner;
     boolean isCounting;
-    /*------------------Cambio de Idioma-----------------*/
+    /*------------------Language change-----------------*/
     Context context;
     Resources resources;
 
@@ -73,58 +69,47 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
 
-        /*----------------------botonos y vistas----------------------*/
+        /*----------------------Buttons and views----------------------*/
         navigationView = findViewById(R.id.navigationView);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerLayout);
         btnContact = findViewById(R.id.btnContact);
         btnAbout = findViewById(R.id.btnAbout);
         btnInfo = findViewById(R.id.btnInfo);
         btnServices = findViewById(R.id.btnServices);
-        txtDcbl = findViewById(R.id.txtDcbl);
+        txtDecibels = findViewById(R.id.txtDcbl);
         txtSelectLanguage = findViewById(R.id.txtSelectLanguage);
-        txtPrueba = findViewById(R.id.txtPrueba);
 
-        /*-----------Botones listeners-----------*/
-        btnAbout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        /*--------------------------Listeners--------------------------*/
+        btnAbout.setOnClickListener(view -> {
 
-            }
         });
-        btnServices.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnServices.setOnClickListener(view -> {
 
-            }
         });
-        btnContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/34633335208?text=Hola"));
-                startActivity(i);
-            }
+        btnContact.setOnClickListener(view -> {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/34633335208?text=Hola"));
+            startActivity(i);
         });
 
-        /*-----------Barra superior para el cambio de idioma-----------*/
+        /*-----------Toolbar for change language-----------*/
         setToolBar();
         setListener();
 
-        /*--------------------solicitud de permisos--------------------*/
+        /*--------------------Permissions request--------------------*/
         if (!hasPermissions(Permissions)) {
             requestPermissions();
         }
 
-        /*---------------------Medidor de decibelios--------------------*/
+        /*---------------------Decibels measure--------------------*/
         if (runner == null) {
             runner = new Thread(() -> {
                 while (runner != null) {
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    ;
                     mHandler.post(updater);
                 }
             });
@@ -133,31 +118,27 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         }
     }
 
-    /*----------------Barra superior con menu desplegable----------------*/
+    /*------------------------Left Menu------------------------*/
     private void setListener() {
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.french:
-                        context = LanguageManager.setLocale(MainActivity.this, "fr");
-                        resources = context.getResources();
-                        break;
-                    case R.id.english:
-                        context = LanguageManager.setLocale(MainActivity.this, "en");
-                        resources = context.getResources();
-                        break;
-                    case R.id.spanish:
-                        context = LanguageManager.setLocale(MainActivity.this, "es");
-                        resources = context.getResources();
-                        break;
-                }
-                refreshLanguage();
-                drawerLayout.close();
-                Toast.makeText(MainActivity.this, resources.getString(R.string.newLanguage), Toast.LENGTH_SHORT).show();
-                return false;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.french:
+                    context = LanguageManager.setLocale(MainActivity.this, "fr");
+                    resources = context.getResources();
+                    break;
+                case R.id.english:
+                    context = LanguageManager.setLocale(MainActivity.this, "en");
+                    resources = context.getResources();
+                    break;
+                case R.id.spanish:
+                    context = LanguageManager.setLocale(MainActivity.this, "es");
+                    resources = context.getResources();
+                    break;
             }
+            refreshLanguage();
+            drawerLayout.close();
+            Toast.makeText(MainActivity.this, resources.getString(R.string.newLanguage), Toast.LENGTH_SHORT).show();
+            return false;
         });
     }
 
@@ -171,9 +152,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            //TODO: mejorar el tamaño del logo de idioma
+            //TODO: Change logo size
             getSupportActionBar().setDisplayUseLogoEnabled(true);
-            getSupportActionBar().setLogo(R.drawable.logomch);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_lang);
         }
     }
@@ -185,19 +165,17 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         }
         return super.onOptionsItemSelected(item);
     }
-    //TODO: Cambio de string utilizado con distintos idiomas!
 
-    /*----------------------Solicitando Permisos----------------------*/
+    /*----------------------Permissions request----------------------*/
 
     private boolean hasPermissions(String[] permissions) {
         return EasyPermissions.hasPermissions(this, permissions);
     }
 
     private void requestPermissions() {
-        EasyPermissions.requestPermissions(this, "Esta aplicación necestita este " +
-                        "permiso para funcionar correctamente", PERMISSIONS_CODE,
+        EasyPermissions.requestPermissions(this, "The app need this permission for works correctly", PERMISSIONS_CODE,
                 Manifest.permission.RECORD_AUDIO);
-        EasyPermissions.requestPermissions(this, "Aceptar este permiso", PERMISSIONS_CODE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        EasyPermissions.requestPermissions(this, "Accept this permission please", PERMISSIONS_CODE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     @Override
@@ -208,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     @Override
     public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
-        Toast.makeText(this, "Permiso Aceptado", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Permission accepted", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -220,11 +198,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         }
     }
 
-    public void onResume() {
-        super.onResume();
-        startRecorder();
-    }
-    /*----------------------Comenzar a medir decibelios ----------------------*/
+    /*----------------------Starting recorder----------------------*/
 
     public void onPause() {
         super.onPause();
@@ -256,21 +230,28 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             }
         }
     }
+    public void onResume() {
+        super.onResume();
+        startRecorder();
+    }
 
+    /*
     public void stopRecorder() {
+
         if (mRecorder != null) {
             mRecorder.stop();
             mRecorder.release();
             mRecorder = null;
         }
     }
-
-
+     */
+    /*----------------------------function for take ambient decibels----------------------------*/
+    /*
     public double soundDb(double ampl) {
         return 20 * (float) Math.log10(getAmplitudeEMA() / ampl);
     }
-
-    public double convertdDb(double amplitude) {
+    */
+    public double convertDb(double amplitude) {
         /*
          *Los teléfonos celulares pueden alcanzar hasta 90 db + -
          *getMaxAmplitude devuelve un valor entre 0 y 32767 (en la mayoría de los teléfonos). eso
@@ -285,19 +266,19 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         //Log.i("db", amp+"");
         //Asumiendo que la presión de referencia mínima es 0.000085 Pascal
         // (en la mayoría de los teléfonos) es igual a 0 db
-        // TODO: Averiguar la referencia minima en Motorola
+        // TODO: Find out the minimum reference in Motorola
         return 20 * (float) Math.log10((mEMAValue / 51805.5336) / 0.000028251);
     }
 
     public void measureDecibels() {
         double amplitude = mRecorder.getMaxAmplitude();
         if (amplitude > 0 && amplitude < 1000000) {
-            decibels = convertdDb(amplitude);
+            decibels = convertDb(amplitude);
             if (decibels > 30) {
                 isCounting=true;
-                txtDcbl.setText(String.format("%.2f", decibels) + " DB");
+                txtDecibels.setText(String.format("%.2f", decibels) + " DB");
                 decibelsCounter = new double[60];
-                double dbl = convertdDb(mRecorder.getMaxAmplitude());
+                convertDb(mRecorder.getMaxAmplitude());
                 /*
                 while (dbl >= 30 && isCounting) {
                     for (int i = 0; i < decibelsCounter.length; i++) {
@@ -326,7 +307,21 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     private void sendDecibArray(double[] db){
         Toast.makeText(this, "Aqui hay fiesta", Toast.LENGTH_LONG).show();
     }
+    public double getAmplitude() {
+        if (mRecorder != null)
+            return (mRecorder.getMaxAmplitude());
+        else
+            return 0;
 
+    }
+
+    public double getAmplitudeEMA() {
+        double amp = getAmplitude();
+        mEMA = EMA_FILTER * amp + (1.0 - EMA_FILTER) * mEMA;
+        return mEMA;
+    }
+
+    /*----------------------------Start counting decibels----------------------------*/
    /*
    public void startCounting() {
         Runnable mRunnable = () -> {
@@ -339,6 +334,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         turnOffLight();
     }
 
+    /*----------------------Sending http request for turn off lights----------------------*/
     private void turnOffLight() {
         String http = "https://tcpmch.herokuapp.com/?client=Oficina&cmd=toggleLight";
         OkHttpClient client = new OkHttpClient();
@@ -352,7 +348,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
                     String res = response.body().string();
@@ -368,17 +364,5 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         });
     }
 
-    public double getAmplitude() {
-        if (mRecorder != null)
-            return (mRecorder.getMaxAmplitude());
-        else
-            return 0;
 
-    }
-
-    public double getAmplitudeEMA() {
-        double amp = getAmplitude();
-        mEMA = EMA_FILTER * amp + (1.0 - EMA_FILTER) * mEMA;
-        return mEMA;
-    }
 }

@@ -56,6 +56,7 @@
                     android:id="@+id/button7"
                     android:layout_width="361dp"
                     android:layout_height="156dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="30dp"
                     android:background="@drawable/round_button_orange"
                     android:text="Button"
@@ -118,24 +119,13 @@
                     android:layout_height="207dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="24dp"
                     android:background="@drawable/round_button_blue"
                     android:contentDescription="TODO"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btnServices"
                     app:srcCompat="@drawable/wpbutton" />
-
-                <TextView
-                    android:id="@+id/txtPrueba"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="TextView"
-                    app:layout_constraintBottom_toTopOf="@+id/txtDcbl"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
