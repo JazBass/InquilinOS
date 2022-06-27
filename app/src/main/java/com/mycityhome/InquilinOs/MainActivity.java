@@ -1,6 +1,7 @@
 package com.mycityhome.InquilinOs;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -151,10 +152,14 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     private void setToolBar() {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setDisplayUseLogoEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_lang);
             //TODO: Change logo size
-            getSupportActionBar().setDisplayUseLogoEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_lang);
         }
     }
 
@@ -363,6 +368,4 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             }
         });
     }
-
-
 }

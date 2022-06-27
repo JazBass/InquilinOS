@@ -24,9 +24,8 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:background="@color/blueBack"
-                android:collapseIcon="@drawable/ic_menu_lang"
                 android:elevation="4dp"
                 android:paddingEnd="55dp"
                 android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -34,7 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
