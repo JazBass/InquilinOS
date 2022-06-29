@@ -7,4 +7,110 @@
     <string name="services">Servicios</string>
     <string name="about">Sobre nosotros</string>
     <string name="newLanguage">Nuevo idioma seleccionado: Español</string>
+    <string name="catedralSantaMaria">Catedral Santa Maria</string>
+    <string name="palacioReal">Palacio Real</string>
+    <string name="puertaAlcala">Puerta de Alcala</string>
+    <string name="cibeles">Cibeles</string>
+    <string name="puertaSol">Sol</string>
+    <string name="elRetiro">Parque del Retiro</string>
+    <string name="sanJeronimo">Iglesia San Jeronimo</string>
+    <string name="elPrado">Museo Del Prado</string>
+    <string name="reinaSofia">Museo Reina Sofia</string>
+    <string name="museoThyssen">Museo Thyssen-Bornemisza</string>
+    <string name="plazaToros">Plaza de Toros</string>
+    <string name="plazaMayor">Plaza Mayor</string>
+    <string name="plazaEspania">Plaza España</string>
+    <string name="mercadoSanMiguel">Mercado de San Miguel</string>
+    <string name="plazaVilla">Plaza Villa</string>
+    <string name="temploDebod">Templo Debos</string>
+
+    <string name="catedralSantaMariaExp">Siguiendo por la calle Mayor llegarás a la Catedral de la Almudena,
+        considerado el edificio religioso más importante que ver en Madrid.
+        Construida sobre los restos de una antigua mezquita y primera catedral que se consagró fuera de Roma
+        en 1993, por el Papa Juan Pablo II, este templo dedicado a la Virgen María destaca en el exterior
+        por su enorme cúpula, mientras que las vidrieras de colores del interior crean una ambiente mágico.</string>
+
+    <string name="palacioRealExp">Justo enfrente de la Catedral de la Almudena, en la Plaza de la Armería,
+        se encuentra la entrada al Palacio Real, residencia oficial de los reyes de España hasta que se
+        trasladaron al Palacio de la Zarzuela, y que además es otro de los mejores lugares que visitar en Madrid.
+        Este enorme palacio, el más grande de la Europa Occidental, en la actualidad se utiliza para visitas turísticas y
+        se cierra para ceremonias de Estado y actos oficiales y antes o después de entrar al complejo te recomendamos
+        acercarte a la Plaza de Oriente y sobre todo, a los jardines Sabatini, para hacer buenas fotos del palacio.</string>
+
+    <string name="puertaAlcalaExp">A pocos metros de la Plaza de Cibeles, subiendo por la calle Alcalá,
+        llegarás a la Puerta de Alcalá, la más famosa de las cinco antiguas puertas reales que daban
+        acceso a la ciudad y otro de los lugares que ver en Madrid más bonitos.</string>
+
+    <string name="cibelesExp">La Plaza de Cibeles, presidida por la preciosa Fuente de las Cibeles,
+        lugar de celebración de los títulos del Real Madrid, es otra de las más emblemáticas que visitar
+        en Madrid.
+        Además de observar de lejos el carro tirado por leones de la diosa Cibeles, en esta rotonda tienes
+        varios edificios a tener en cuenta como el Palacio de Buenavista, que data del 1777, el Palacio
+        de Linares, el Banco de España y sobre todo el imponente Palacio de Cibeles, que alberga el
+        ayuntamiento y tiene un fantástico mirador en su terraza que ofrece visitas desde el Parque del
+        Retiro hasta los rascacielos de la zona financiera.</string>
+
+    <string name="puertaSolExp">En esta plaza se encuentran varios puntos de interés como la estatua
+        del Oso y el Madroño (símbolo de Madrid), el famoso cartel publicitario de Tío Pepe y la estatua
+        ecuestre de Carlos III, situada justo en el centro.
+        Aunque el lugar más emblemático de este amplio espacio, activo las 24 horas del día, es la Casa
+        de Correos, cuyo reloj da las populares campanadas de fin de año, y que tiene justo al lado, una
+        pequeña placa de granito que marca el «kilómetro 0» de España.</string>
+
+    <string name="elRetiroExp">Otra de las mejores cosas que hacer en Madrid es dar un agradable
+        paseo por el famoso parque del Retiro, desconectando del ruido y el estrés de la ciudad.
+        En este parque histórico encontrarás desde un enorme estanque artificial, que tiene en uno de los
+        laterales el Monumento a Alfonso XII y donde puedes alquilar una barquita para dar un paseo,
+        hasta el precioso Palacio de Cristal, que te enamorará a primera vista.</string>
+
+    <string name="sanJeronimoExp">El antiguo monasterio de san Jerónimo el Real, conocido popularmente
+        como «Los Jerónimos», fue uno de los monasterios más importantes de Madrid, regido originariamente
+        por la Orden de San Jerónimo. Junto a él existía el llamado Cuarto Real, luego ampliado como
+        Palacio del Buen Retiro en tiempos de Felipe IV.</string>
+
+    <string name="elPradoExp">Uno de los museos más importantes del mundo y otro de los lugares que
+        visitar en Madrid imprescindibles.
+        Con miles de interesantes obras, entre las mejores obras que ver en el Museo del Prado se encuentran
+        Las Tres Gracias de Rubens, El Caballero de la Mano en el Pecho de El Greco, La Maja Desnuda
+        y el El 3 de mayo en Madrid de Goya, El Jardín de las Delicias de El Bosco y la obra maestra
+        de Velázquez, Las Meninas.</string>
+
+    <string name="reinaSofiaExp">Con más de 4 millones de visitantes al año, este museo tiene grandes
+        obras de Dalí y Miró, entre otros muchos artistas, aunque nada hace sombre a su joya, el cuadro
+        del Guernica de Picasso, una de las grandes obras maestras de la historia de la pintura.</string>
+
+    <string name="museoThyssenExp">Ubicado en el Paseo del Arte, su colección permanente traza la historia
+        de la pintura europea desde la Edad Media hasta finales del siglo XX. Los primitivos italianos,
+        el Renacimiento alemán, la pintura americana del XIX, el impresionismo, el expresionismo alemán
+        y el constructivismo ruso son las escuelas y los movimientos más ampliamente representados en
+        el museo. </string>
+
+    <string name="plazaTorosExp">Con una capacidad para más de 23.000 espectadores, la Plaza de Toros
+        de Las Ventas es la más grande de España y la tercera con mayor aforo del mundo, por detrás
+        de las de México y Valencia (Venezuela).
+        La plaza, construida en 1929 sobre el terreno conocido como
+        “Las Ventas del Espíritu Santo”, fue diseñada en estilo neomudéjar con ladrillo rojo visto
+        y cuenta con un ruedo de 61 metros de diámetro.</string>
+
+    <string name="plazaMayorExp">Esta preciosa plaza rectangular de 129 metros de largo y 94 de ancho,
+        está rodeada de importantes edificios como la Casa de la Panadería y otras joyas como el Arco
+        de Cuchilleros y la Estatua de Felipe III, un regalo del Duque de Florencia.</string>
+
+    <string name="plazaEspaniaExp">Aunque no es la más bonita de la ciudad, merece la pena invertir un
+        tiempo en ver varios monumentos y edificios históricos como la Torre de Madrid, de 142 metros
+        de altura, la Casa Gallardo de estilo modernista, el Monumento a Miguel de Cervantes y el
+        edificio de la Compañía Asturiana de Minas.</string>
+
+    <string name="mercadoSanMiguelExp">Situado en pleno centro, el Mercado de San Miguel, es un punto
+        de encuentro para los amantes de la buena gastronomía y uno de los mercados más emblemáticos
+        que ver en Madrid.</string>
+
+    <string name="plazaVillaExp">Al salir del mercado de San Miguel puedes dar una paseo por las calles del conocido
+        como Madrid de los Austrias, en el que destaca la bonita Plaza de la Villa.</string>
+
+    <string name="temploDebodExp">Este antiguo templo egipcio de más de 2.200 años de antigüedad fue
+        un regalo de Egipto a España por la ayuda que prestó en su momento para salvar Abu Simbel de
+        quedar sumergido bajo las aguas de la Gran Presa de Asuán.
+        El Templo de Debod se ha convertido en un lugar precioso en el que disfrutar de la tranquilidad y el
+        relax, sobre todo a última hora de la tarde, cuando puedes contemplar una puesta de sol única.</string>
 </resources>

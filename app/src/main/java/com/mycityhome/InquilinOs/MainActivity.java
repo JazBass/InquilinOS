@@ -27,6 +27,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Stack;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -49,18 +50,19 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     int PERMISSIONS_CODE = 1;
     String[] Permissions = {
             Manifest.permission.RECORD_AUDIO,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
     };
     /*---------------Decibels measure---------------*/
     static final private double EMA_FILTER = 0.6;
     private static double mEMA = 0.0;
     MediaRecorder mRecorder;
     double decibels;
-    double[] decibelsCounter;
+    Stack<Double> decibelsCounter;
     final Handler mHandler = new Handler();
     final Runnable updater = this::measureDecibels;
     Thread runner;
-    boolean isCounting;
     /*------------------Language change-----------------*/
     Context context;
     Resources resources;
@@ -82,8 +84,9 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         txtSelectLanguage = findViewById(R.id.txtSelectLanguage);
 
         /*--------------------------Listeners--------------------------*/
-        btnAbout.setOnClickListener(view -> {
-
+        btnInfo.setOnClickListener(view -> {
+            Intent i = new Intent(this, MapActivity.class);
+            startActivity(i);
         });
         btnServices.setOnClickListener(view -> {
 
@@ -101,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         if (!hasPermissions(Permissions)) {
             requestPermissions();
         }
+        //TODO: Add location permissions request
 
         /*---------------------Decibels measure--------------------*/
         if (runner == null) {
@@ -143,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         });
     }
 
-    public void refreshLanguage(){
+    public void refreshLanguage() {
         btnAbout.setText(resources.getString(R.string.about));
         btnInfo.setText(resources.getString(R.string.info));
         btnServices.setText(resources.getString(R.string.services));
@@ -235,6 +239,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             }
         }
     }
+
     public void onResume() {
         super.onResume();
         startRecorder();
@@ -280,38 +285,43 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         if (amplitude > 0 && amplitude < 1000000) {
             decibels = convertDb(amplitude);
             if (decibels > 30) {
-                isCounting=true;
                 txtDecibels.setText(String.format("%.2f", decibels) + " DB");
-                decibelsCounter = new double[60];
+                decibelsCounter = new Stack<>();
+                int count = 0;
                 convertDb(mRecorder.getMaxAmplitude());
-                /*
-                while (dbl >= 30 && isCounting) {
-                    for (int i = 0; i < decibelsCounter.length; i++) {
-                        decibelsCounter[i]=decibels;
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        if (i == 59) {
-                            sendDecibArray(decibelsCounter);
-                        }
-                        dbl = convertdDb(mRecorder.getMaxAmplitude());
-                        Log.i("decib", "decibeles: "+dbl);
-
+                /*while (decibels >= 30) {
+                    try {
+                        Thread.sleep(5000);
+                    }catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                }*/
-                //startCounting();
+                    if (count < 60) {
+                        decibelsCounter.push(decibels);
+                    } else {
+                        decibelsCounter.remove(0);
+                        decibelsCounter.push(decibels);
+                    }
+                    count++;
+                    getMedia(decibelsCounter);
+                    decibels = convertDb(mRecorder.getMaxAmplitude());
+                    Log.i("decib", "decibeles: " + decibels);
+                }
+                */
             }
+            //startCounting();
         }
-        //startCounting(decibels);
-        //hardNoise(decibels);
+    }
+    //startCounting(decibels);
+    //hardNoise(decibels);
+
+    private void getMedia(Stack<Double> decibelsCounter){
+
     }
 
-    private void sendDecibArray(double[] db){
+    private void sendDecibArray(double[] db) {
         Toast.makeText(this, "Aqui hay fiesta", Toast.LENGTH_LONG).show();
     }
+
     public double getAmplitude() {
         if (mRecorder != null)
             return (mRecorder.getMaxAmplitude());

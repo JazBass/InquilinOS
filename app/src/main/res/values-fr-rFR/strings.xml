@@ -7,4 +7,37 @@
     <string name="services">Services</string>
     <string name="about">À propos de nous</string>
     <string name="newLanguage">Nouvelle langue sélectionnée: Français</string>
+    <string name="catedralSantaMaria">Cathédrale Santa Maria</string>
+    <string name="palacioReal">Palais Royal</string>
+    <string name="puertaAlcala">Porte "d'Alcala"</string>
+    <string name="cibeles">Cibeles</string>
+    <string name="puertaSol">Sol</string>
+    <string name="elRetiro">Retiro Parque</string>
+    <string name="sanJeronimo">Église San Jeronimo</string>
+    <string name="elPrado">Musée El Prado</string>
+    <string name="reinaSofia">Musée Reina Sofia</string>
+    <string name="museoThyssen">Musée Thyssen-Bornemisza</string>
+    <string name="plazaToros">Plaza de Toros</string>
+    <string name="plazaMayor">Plaza Mayor</string>
+    <string name="plazaEspania">Plaza España</string>
+    <string name="mercadoSanMiguel">San Miguel Market</string>
+    <string name="plazaVilla">Plaza Villa</string>
+    <string name="temploDebod">Temple Debos</string>
+
+    <string name="catedralSantaMariaExp"></string>
+    <string name="palacioRealExp"></string>
+    <string name="puertaAlcalaExp"></string>
+    <string name="cibelesExp"></string>
+    <string name="puertaSolExp"></string>
+    <string name="elRetiroExp"></string>
+    <string name="sanJeronimoExp"></string>
+    <string name="elPradoExp"></string>
+    <string name="reinaSofiaExp"></string>
+    <string name="museoThyssenExp"></string>
+    <string name="plazaTorosExp"></string>
+    <string name="plazaMayorExp"></string>
+    <string name="plazaEspaniaExp"></string>
+    <string name="mercadoSanMiguelExp"></string>
+    <string name="plazaVillaExp"></string>
+    <string name="temploDebodExp"></string>
 </resources>
