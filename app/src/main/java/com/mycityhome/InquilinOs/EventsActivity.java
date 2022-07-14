@@ -6,10 +6,12 @@ import android.util.JsonReader;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -22,7 +24,10 @@ import java.util.List;
 
 public class EventsActivity extends AppCompatActivity {
 
+    private List <Event> listEvents;
     ProgressBar progressBar;
+    TextView txtEvents;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,18 +35,21 @@ public class EventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_events);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
+        txtEvents = findViewById(R.id.txtEvents);
+        txtEvents.setVisibility(View.INVISIBLE);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setVisibility(View.INVISIBLE);
         new JsonTask().execute();
     }
 
-    class JsonTask extends AsyncTask<Void, Void, String> {
+    private class JsonTask extends AsyncTask<Void, Void, String> {
 
-        String url = "https://tcpmch.herokuapp.com/events";
-        String name, description, eventUrl, dtStart, dtEnd,
+        private final String url = "https://tcpmch.herokuapp.com/events";
+        private String name, description, eventUrl, dtStart, dtEnd,
                 stHour, endHour, latitude, longitude, locality, streetAddress, postalCode, price;
-        String[] myAdress;
-        LatLng location;
-        List<Event> events;
-
+        private String[] myAdress;
+        private LatLng location;
+        private List<Event> events;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -54,7 +62,7 @@ public class EventsActivity extends AppCompatActivity {
                 URL myUrl = new URL(url);
                 HttpURLConnection urlConnection = (HttpURLConnection) myUrl.openConnection();
                 InputStreamReader streamReader = new InputStreamReader(urlConnection.getInputStream());
-                readJsonStream(streamReader);
+                listEvents = readJsonStream(streamReader);
             } catch (IOException malformedURLException) {
                 malformedURLException.printStackTrace();
             }
@@ -84,30 +92,43 @@ public class EventsActivity extends AppCompatActivity {
             reader.beginObject();
             while (reader.hasNext()) {
                 String line = reader.nextName();
-                if (line.equals("title")) {
-                    name = reader.nextString();
-                } else if (line.equals("description")) {
-                    description = reader.nextString();
-                } else if (line.equals("startDate")) {
-                    dtStart = reader.nextString();
-                } else if (line.equals("endDate")) {
-                    dtEnd = reader.nextString();
-                } else if (line.equals("startHour")) {
-                    stHour = reader.nextString();
-                } else if (line.equals("endHour")) {
-                    endHour = reader.nextString();
-                } else if (line.equals("price")) {
-                    price = reader.nextString();
-                } else if (line.equals("url")) {
-                    eventUrl = reader.nextString();
-                } else if (line.equals("latitude")) {
-                    latitude = reader.nextString();
-                } else if (line.equals("longitude")) {
-                    longitude = reader.nextString();
-                } else if (line.equals("address")) {
-                    myAdress = readAddress(reader);
-                } else {
-                    reader.skipValue();
+                switch (line) {
+                    case "title":
+                        name = reader.nextString();
+                        break;
+                    case "description":
+                        description = reader.nextString();
+                        break;
+                    case "startDate":
+                        dtStart = reader.nextString();
+                        break;
+                    case "endDate":
+                        dtEnd = reader.nextString();
+                        break;
+                    case "startHour":
+                        stHour = reader.nextString();
+                        break;
+                    case "endHour":
+                        endHour = reader.nextString();
+                        break;
+                    case "price":
+                        price = reader.nextString();
+                        break;
+                    case "url":
+                        eventUrl = reader.nextString();
+                        break;
+                    case "latitude":
+                        latitude = reader.nextString();
+                        break;
+                    case "longitude":
+                        longitude = reader.nextString();
+                        break;
+                    case "address":
+                        myAdress = readAddress(reader);
+                        break;
+                    default:
+                        reader.skipValue();
+                        break;
                 }
             }
             reader.endObject();
@@ -135,13 +156,22 @@ public class EventsActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            showList();
+            init();
             Log.i("json", "Se han guardado " + events.size() + "eventos");
         }
     }
 
-    public void showList() {
-
+    public void init(){
+        progressBar.setVisibility(View.INVISIBLE);
+        txtEvents.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
+        ListAdapter listAdapter = new ListAdapter((listEvents), this, new ListAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(Event item) {}
+        });
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listAdapter);
     }
 
 }

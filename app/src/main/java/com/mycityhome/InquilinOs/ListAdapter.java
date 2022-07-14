@@ -4,12 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
@@ -50,19 +50,21 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView color, name, estadio;
+        TextView dataStart, dataEnd, name, place;
 
         ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
-            estadio = itemView.findViewById(R.id.estadio);
-            color = itemView.findViewById(R.id.status);
-            image = itemView.findViewById(R.id.image);
+            place = itemView.findViewById(R.id.place);
+            dataStart = itemView.findViewById(R.id.dataStart);
+            dataEnd = itemView.findViewById(R.id.dataEnd);
         }
 
         void bindData(final Event item) {
-
+            name.setText(item.getName());
+            dataStart.setText(item.getStHour());
+            dataEnd.setText(item.endHour);
+            place.setText(Arrays.toString(item.getAddress()));
         }
     }
 }
