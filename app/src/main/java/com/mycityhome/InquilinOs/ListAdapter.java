@@ -65,6 +65,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             dataStart.setText(item.getStHour());
             dataEnd.setText(item.endHour);
             place.setText(Arrays.toString(item.getAddress()));
+
         }
     }
 }
