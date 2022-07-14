@@ -2,6 +2,7 @@ package com.mycityhome.InquilinOs;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -40,24 +41,60 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     LatLng plazaVilla = new LatLng(40.4153651, -3.7105331);
     LatLng temploDebod = new LatLng(40.4240216, -3.717769499999999);
 
+    /*
+           String stPlazaEspania = getResources().getString(R.string.plazaEspania);
+           String stCatedralSantaMaria= getResources().getString(R.string.catedralSantaMaria);
+           String stPalacioReal= getResources().getString(R.string.palacioReal);
+           String stElPrado= getResources().getString(R.string.elPrado);
+           String stSanJeronimo = getResources().getString(R.string.sanJeronimo);
+           String stElRetiro= getResources().getString(R.string.elRetiro);
+           String stPuertaSol = getResources().getString(R.string.puertaSol);
+           String stCibeles = getResources().getString(R.string.cibeles);
+           String stPuertaAlcala = getResources().getString(R.string.puertaAlcala);
+           String stTemploDebod = getResources().getString(R.string.temploDebod);
+           String stPlazaVilla = getResources().getString(R.string.plazaVilla);
+           String stMercadoSanMiguel = getResources().getString(R.string.mercadoSanMiguel);
+           String stPlazaMayor = getResources().getString(R.string.plazaMayor);
+           String stPlazaToros = getResources().getString(R.string.plazaToros);
+           String stMuseoThyssen = getResources().getString(R.string.museoThyssen);
+           String stReinaSofia = getResources().getString(R.string.reinaSofia);
+
+                   LocationsMadrid[] locationsMadrid = new LocationsMadrid[]{
+                           new LocationsMadrid(stPlazaEspania, plazaEspaña),
+                           new LocationsMadrid(stCatedralSantaMaria, catedralSantaMaria),
+                           new LocationsMadrid(stPalacioReal, palacioReal),
+                           new LocationsMadrid(stElPrado, elPrado),
+                           new LocationsMadrid(stSanJeronimo, sanJeronimo),
+                           new LocationsMadrid(stElRetiro, elRetiro),
+                           new LocationsMadrid(stPuertaSol ,puertaSol),
+                           new LocationsMadrid(stCibeles , cibeles),
+                           new LocationsMadrid(stPuertaAlcala, puertaAlcala),
+                           new LocationsMadrid(stTemploDebod, temploDebod),
+                           new LocationsMadrid(stPlazaVilla, plazaVilla),
+                           new LocationsMadrid(stMercadoSanMiguel, mercadoSanMiguel),
+                           new LocationsMadrid(stPlazaMayor, plazaMayor),
+                           new LocationsMadrid(stPlazaToros, plazaToros),
+                           new LocationsMadrid(stMuseoThyssen, museoThyssen),
+                           new LocationsMadrid(stReinaSofia, reinaSofia)
+                   };
+                    */
     LocationsMadrid[] locationsMadrid = new LocationsMadrid[]{
-            new LocationsMadrid("String", plazaEspaña),
-            new LocationsMadrid("catedralSantaMaria", catedralSantaMaria),
-            new LocationsMadrid("palacioReal", palacioReal),
-            new LocationsMadrid("elPrado", elPrado),
-            new LocationsMadrid("sanJeronimo", sanJeronimo),
-            new LocationsMadrid("elRetiro", elRetiro),
-            new LocationsMadrid("puertaSol",puertaSol),
-            new LocationsMadrid("cibeles", cibeles),
-            new LocationsMadrid("puertaAlcala", puertaAlcala),
-            new LocationsMadrid("catedralSantaMaria", catedralSantaMaria),
-            new LocationsMadrid("temploDebod", temploDebod),
-            new LocationsMadrid("plazaVilla", plazaVilla),
-            new LocationsMadrid("mercadoSanMiguel", mercadoSanMiguel),
-            new LocationsMadrid("plazaMayor", plazaMayor),
-            new LocationsMadrid("plazaToros", plazaToros),
-            new LocationsMadrid("museoThyssen", museoThyssen),
-            new LocationsMadrid("reinaSofia", reinaSofia)
+            new LocationsMadrid("Plaza España", plazaEspaña),
+            new LocationsMadrid("Catedral Santa María", catedralSantaMaria),
+            new LocationsMadrid("Palacio Real", palacioReal),
+            new LocationsMadrid("Museo del Prado", elPrado),
+            new LocationsMadrid("Iglesia San Jerónimo", sanJeronimo),
+            new LocationsMadrid("Parque del Retiro", elRetiro),
+            new LocationsMadrid("Puerta del Sol", puertaSol),
+            new LocationsMadrid("Cibeles", cibeles),
+            new LocationsMadrid("Puerta de Alcalá", puertaAlcala),
+            new LocationsMadrid("Templo Debod", temploDebod),
+            new LocationsMadrid("Plaza Villa", plazaVilla),
+            new LocationsMadrid("Mercado San Miguel", mercadoSanMiguel),
+            new LocationsMadrid("Plaza Mayot", plazaMayor),
+            new LocationsMadrid("Plaza de Toros", plazaToros),
+            new LocationsMadrid("Museo Thyssen-Bornemisza", museoThyssen),
+            new LocationsMadrid("Museo Reina Sofía", reinaSofia)
     };
 
     String[] Permissions = {
@@ -83,7 +120,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         googleMap.setOnInfoWindowClickListener(this);
         CameraPosition position = new CameraPosition.Builder()
                 .target(ubicationMadrid)
-                .zoom(16)
+                .zoom(14)
                 .build();
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(position));
         try {
@@ -97,13 +134,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+            googleMap.getUiSettings().setMapToolbarEnabled(false);
         } catch (SecurityException e) {
             e.printStackTrace();
         }
+        for (LocationsMadrid location :
+                locationsMadrid) {
+            MarkerOptions mark = new MarkerOptions()
+                    .position(location.getLocation())
+                    .title(location.getName());
+            googleMap.addMarker(mark);
+        }
 
-        MarkerOptions mark =new MarkerOptions()
-                .position(plazaEspaña)
-                .title(String.valueOf(R.string.plazaEspania));
     }
 
     @Override

@@ -10,4 +10,13 @@ public class LocationsMadrid {
         this.name = name;
         this.location = location;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public LatLng getLocation() {
+        return location;
+    }
+
 }

@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
         /*--------------------------Listeners--------------------------*/
         btnInfo.setOnClickListener(view -> {
-            Intent i = new Intent(this, MapActivity.class);
+            Intent i = new Intent(this, TurismActivity.class);
             startActivity(i);
         });
         btnServices.setOnClickListener(view -> {
