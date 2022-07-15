@@ -24,10 +24,11 @@ import java.util.List;
 
 public class EventsActivity extends AppCompatActivity {
 
-    private List <Event> listEvents;
+    private List<Event> listEvents;
     ProgressBar progressBar;
     TextView txtEvents;
     RecyclerView recyclerView;
+    String TAG = "json";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,11 +46,11 @@ public class EventsActivity extends AppCompatActivity {
     private class JsonTask extends AsyncTask<Void, Void, String> {
 
         private final String url = "https://tcpmch.herokuapp.com/events";
-        private String name, description, eventUrl, dtStart, dtEnd,
-                stHour, endHour, latitude, longitude, locality, streetAddress, postalCode, price;
-        private String[] myAdress;
-        private LatLng location;
+        private String name, longitude, latitude, eventUrl, description,dtStart,dtEnd,stHour,endHour,
+                locality,streetAddress,postalCode,price;
+        private String[] myAddress;
         private List<Event> events;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -79,7 +80,7 @@ public class EventsActivity extends AppCompatActivity {
         }
 
         public List<Event> readEventArray(JsonReader reader) throws IOException {
-            events = new ArrayList<Event>();
+            events = new ArrayList<>();
             reader.beginArray();
             while (reader.hasNext()) {
                 events.add(readEvent(reader));
@@ -124,50 +125,64 @@ public class EventsActivity extends AppCompatActivity {
                         longitude = reader.nextString();
                         break;
                     case "address":
-                        myAdress = readAddress(reader);
+                        streetAddress = readArea(reader);
                         break;
                     default:
                         reader.skipValue();
                         break;
                 }
             }
+            double mLatitude = Double.parseDouble(latitude);
+            double mLongitude = Double.parseDouble(longitude);
             reader.endObject();
-            location = new LatLng(30.434324, 34.342432);
-            return new Event(name, description, url, myAdress, dtStart, dtEnd, stHour,
-                    endHour, location, price);
+            LatLng location = new LatLng(mLatitude, mLongitude);
+            Log.i(TAG, "latlon: "+location);
+            return new Event(name, description, url, myAddress, dtStart, dtEnd, stHour,
+                    endHour, location, price, streetAddress);
         }
 
-        private String[] readAddress(JsonReader reader) throws IOException {
+        private String readArea(JsonReader reader) throws IOException {
+            String address ="";
             reader.beginObject();
             while (reader.hasNext()) {
                 String line = reader.nextName();
-                if (line.equals("locality")) {
-                    locality = reader.nextString();
-                } else if (line.equals("street-address")) {
-                    streetAddress = reader.nextString();
-                } else if (line.equals("postal-code")) {
-                    postalCode = reader.nextString();
-                } else reader.skipValue();
+                if (line.equals("area"))
+                        address = readAddress(reader);
+                else
+                    reader.skipValue();
+            }
+            Log.i(TAG, "streetAddress: " + streetAddress);
+            reader.endObject();
+            return address;
+        }
+
+        private String readAddress(JsonReader reader) throws IOException {
+            String address = "";
+            reader.beginObject();
+            while (reader.hasNext()) {
+                String line = reader.nextName();
+                if (line.equals("street-address"))
+                    address = reader.nextString();
+                else
+                    reader.skipValue();
             }
             reader.endObject();
-            return new String[]{streetAddress, locality, postalCode};
+            return address;
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             init();
-            Log.i("json", "Se han guardado " + events.size() + "eventos");
+            Log.i(TAG, "Se han guardado " + events.size() + "eventos");
         }
     }
 
-    public void init(){
+    public void init() {
         progressBar.setVisibility(View.INVISIBLE);
         txtEvents.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.VISIBLE);
-        ListAdapter listAdapter = new ListAdapter((listEvents), this, new ListAdapter.onItemClickListener() {
-            @Override
-            public void onItemClick(Event item) {}
+        ListAdapter listAdapter = new ListAdapter((listEvents), this, item -> {
         });
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

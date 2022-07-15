@@ -2,11 +2,9 @@ package com.mycityhome.InquilinOs;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.Date;
-
 public class Event {
 
-    String name, description, url, stDate, endDate, stHour, endHour, price;
+    String name, description, url, stDate, endDate, stHour, endHour, price, streetAddress;
     String[] address;
     boolean isFree;
     LatLng location;
@@ -14,7 +12,8 @@ public class Event {
         this.name = name;
     }
     public Event(String name, String description, String url, String[] address, String stDate,
-                 String endDate, String stHour, String endHour, LatLng location, String  price) {
+                 String endDate, String stHour, String endHour, LatLng location, String  price,
+                 String streetAddress) {
         this.name = name;
         this.description = description;
         this.url = url;
@@ -25,6 +24,7 @@ public class Event {
         this.endHour = endHour;
         this.location = location;
         this.price = price;
+        this.streetAddress = streetAddress;
     }
 
     public String getName() {
@@ -113,5 +113,13 @@ public class Event {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
     }
 }

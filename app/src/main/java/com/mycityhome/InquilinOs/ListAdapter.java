@@ -9,13 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Event> mData;
-    private LayoutInflater inflater;
-    private Context context;
+    private final LayoutInflater inflater;
     final onItemClickListener listener;
 
     public interface onItemClickListener {
@@ -24,7 +22,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     public ListAdapter(List<Event> itemList, Context context, onItemClickListener listener) {
         this.inflater = LayoutInflater.from(context);
-        this.context = context;
         this.mData = itemList;
         this.listener = listener;
     }
@@ -34,8 +31,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return mData.size();
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = inflater.inflate(R.layout.layout_event, null);
         return new ViewHolder(v);
     }
@@ -49,7 +47,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         mData = items;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView dataStart, dataEnd, name, place;
 
         ViewHolder(View itemView) {
@@ -62,10 +60,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         void bindData(final Event item) {
             name.setText(item.getName());
-            dataStart.setText(item.getStHour());
-            dataEnd.setText(item.endHour);
-            place.setText(Arrays.toString(item.getAddress()));
-
+            dataStart.setText(String.format("Del: %s", item.getStDate()));
+            dataEnd.setText(String.format("Al: %s", item.getEndDate()));
+            place.setText(item.getStreetAddress());
         }
     }
 }
