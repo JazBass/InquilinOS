@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -29,6 +30,7 @@
         <activity android:name=".TurismActivity"/>
         <activity android:name=".MapActivity"/>
         <activity android:name=".EventsActivity"/>
+        <activity android:name=".WebsiteActivity"/>
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA610eD8mbbxJY6A_N5nI2BWWXa9yNXoA8"/>
     </application>
 

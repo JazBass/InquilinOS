@@ -1,8 +1,8 @@
 package com.mycityhome.InquilinOs;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,61 +23,24 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleMap.OnInfoWindowClickListener {
 
-    LatLng ubicationMadrid = new LatLng(40.4198524186511, -3.702922076154419);
-    LatLng plazaEspaña = new LatLng(40.423385, -3.712180);
-    LatLng catedralSantaMaria = new LatLng(40.415651, -3.714552);
-    LatLng palacioReal = new LatLng(40.417955, -3.714311999999999);
-    LatLng puertaAlcala = new LatLng(40.419992, -3.688737);
-    LatLng cibeles = new LatLng(40.41933, -3.69308);
-    LatLng puertaSol = new LatLng(40.4169473, -3.7035285);
-    LatLng elRetiro = new LatLng(40.4152606, -3.6844995);
-    LatLng sanJeronimo = new LatLng(40.4145455, -3.691040100000001);
-    LatLng elPrado = new LatLng(40.4137818, -3.6921271);
-    LatLng reinaSofia = new LatLng(40.40791229999999, -3.6945569);
-    LatLng museoThyssen = new LatLng(40.41604059999999, -3.694925399999999);
-    LatLng plazaToros = new LatLng(40.30912920000001, -3.0107693);
-    LatLng plazaMayor = new LatLng(40.415511, -3.707400899999999);
-    LatLng mercadoSanMiguel = new LatLng(40.4153794, -3.708969699999999);
-    LatLng plazaVilla = new LatLng(40.4153651, -3.7105331);
-    LatLng temploDebod = new LatLng(40.4240216, -3.717769499999999);
+    LatLng ubicationMadrid = new LatLng(40.4198524186511, -3.702922076154419),
+     plazaEspaña = new LatLng(40.423385, -3.712180),
+     catedralSantaMaria = new LatLng(40.415651, -3.714552),
+     palacioReal = new LatLng(40.417955, -3.714311999999999),
+     puertaAlcala = new LatLng(40.419992, -3.688737),
+     cibeles = new LatLng(40.41933, -3.69308),
+     puertaSol = new LatLng(40.4169473, -3.7035285),
+     elRetiro = new LatLng(40.4152606, -3.6844995),
+     sanJeronimo = new LatLng(40.4145455, -3.691040100000001),
+     elPrado = new LatLng(40.4137818, -3.6921271),
+     reinaSofia = new LatLng(40.40791229999999, -3.6945569),
+     museoThyssen = new LatLng(40.41604059999999, -3.694925399999999),
+     plazaToros = new LatLng(40.30912920000001, -3.0107693),
+     plazaMayor = new LatLng(40.415511, -3.707400899999999),
+     mercadoSanMiguel = new LatLng(40.4153794, -3.708969699999999),
+     plazaVilla = new LatLng(40.4153651, -3.7105331),
+     temploDebod = new LatLng(40.4240216, -3.717769499999999);
 
-    /*
-           String stPlazaEspania = getResources().getString(R.string.plazaEspania);
-           String stCatedralSantaMaria= getResources().getString(R.string.catedralSantaMaria);
-           String stPalacioReal= getResources().getString(R.string.palacioReal);
-           String stElPrado= getResources().getString(R.string.elPrado);
-           String stSanJeronimo = getResources().getString(R.string.sanJeronimo);
-           String stElRetiro= getResources().getString(R.string.elRetiro);
-           String stPuertaSol = getResources().getString(R.string.puertaSol);
-           String stCibeles = getResources().getString(R.string.cibeles);
-           String stPuertaAlcala = getResources().getString(R.string.puertaAlcala);
-           String stTemploDebod = getResources().getString(R.string.temploDebod);
-           String stPlazaVilla = getResources().getString(R.string.plazaVilla);
-           String stMercadoSanMiguel = getResources().getString(R.string.mercadoSanMiguel);
-           String stPlazaMayor = getResources().getString(R.string.plazaMayor);
-           String stPlazaToros = getResources().getString(R.string.plazaToros);
-           String stMuseoThyssen = getResources().getString(R.string.museoThyssen);
-           String stReinaSofia = getResources().getString(R.string.reinaSofia);
-
-                   LocationsMadrid[] locationsMadrid = new LocationsMadrid[]{
-                           new LocationsMadrid(stPlazaEspania, plazaEspaña),
-                           new LocationsMadrid(stCatedralSantaMaria, catedralSantaMaria),
-                           new LocationsMadrid(stPalacioReal, palacioReal),
-                           new LocationsMadrid(stElPrado, elPrado),
-                           new LocationsMadrid(stSanJeronimo, sanJeronimo),
-                           new LocationsMadrid(stElRetiro, elRetiro),
-                           new LocationsMadrid(stPuertaSol ,puertaSol),
-                           new LocationsMadrid(stCibeles , cibeles),
-                           new LocationsMadrid(stPuertaAlcala, puertaAlcala),
-                           new LocationsMadrid(stTemploDebod, temploDebod),
-                           new LocationsMadrid(stPlazaVilla, plazaVilla),
-                           new LocationsMadrid(stMercadoSanMiguel, mercadoSanMiguel),
-                           new LocationsMadrid(stPlazaMayor, plazaMayor),
-                           new LocationsMadrid(stPlazaToros, plazaToros),
-                           new LocationsMadrid(stMuseoThyssen, museoThyssen),
-                           new LocationsMadrid(stReinaSofia, reinaSofia)
-                   };
-                    */
     LocationsMadrid[] locationsMadrid = new LocationsMadrid[]{
             new LocationsMadrid("Plaza España", plazaEspaña),
             new LocationsMadrid("Catedral Santa María", catedralSantaMaria),
@@ -102,6 +65,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
 
+    private boolean isCustom;
+    private Event event;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +75,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.mapView);
         assert mapFragment != null;
-        mapFragment.getMapAsync((OnMapReadyCallback) this);
+        mapFragment.getMapAsync(this);
+        Intent i = getIntent();
+        if (i.getStringExtra("kind").equals("custom")){
+            isCustom = true;
+            event = (Event) i.getSerializableExtra("ListElement");
+        }else isCustom=false;
     }
 
     @Override
@@ -138,19 +109,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         } catch (SecurityException e) {
             e.printStackTrace();
         }
-        for (LocationsMadrid location :
-                locationsMadrid) {
+        if (isCustom){
+            LatLng mLocation = new LatLng(Double.parseDouble(event.getLatitude()),Double.parseDouble(event.getLongitude()));
             MarkerOptions mark = new MarkerOptions()
-                    .position(location.getLocation())
-                    .title(location.getName());
+                    .position(mLocation)
+                    .title(event.getName());
             googleMap.addMarker(mark);
+        }else {
+            for (LocationsMadrid location :
+                    locationsMadrid) {
+                MarkerOptions mark = new MarkerOptions()
+                        .position(location.getLocation())
+                        .title(location.getName());
+                googleMap.addMarker(mark);
+            }
         }
-
     }
 
     @Override
     public void onInfoWindowClick(@NonNull Marker marker) {
 
     }
-
 }

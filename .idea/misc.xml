@@ -7,23 +7,29 @@
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable-anydpi/ic_menu_lat.xml" value="0.154" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.154" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable-xxhdpi/round_button_green.xml" value="0.154" />
+        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable/gradient.xml" value="0.192" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable/ic_launcher_background.xml" value="0.172" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable/ic_mycity_background.xml" value="0.154" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable/menu_lateral.xml" value="0.173" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable/round_button.xml" value="0.172" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable/round_button_blue.xml" value="0.154" />
+        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable/round_button_bluelite.xml" value="0.171" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable/round_button_orange.xml" value="0.172" />
+        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/drawable/round_button_orangelite.xml" value="0.171" />
+        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_description.xml" value="0.22" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_events.xml" value="0.1633176571184267" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_initial.xml" value="0.22" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_list_events.xml" value="0.16417272338606242" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_map.xml" value="0.1633176571184267" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_recyclerlist.xml" value="0.16417272338606242" />
-        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_turism.xml" value="0.16417272338606242" />
+        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_turism.xml" value="0.22" />
+        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_website.xml" value="0.16324786324786325" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/activity_wppweb.xml" value="0.16417272338606242" />
+        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/custom_map_activity.xml" value="0.1633176571184267" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/drawer_layout.xml" value="0.1" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/drawer_layout_menu.xml" value="0.16417272338606242" />
-        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/layout_event.xml" value="0.25" />
+        <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/layout_event.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/list_events.xml" value="0.16417272338606242" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/media_rec.xml" value="0.16417272338606242" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/layout/menu_lateral.xml" value="0.1441523118766999" />

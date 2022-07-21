@@ -13,7 +13,7 @@ import java.util.List;
 public class TurismActivity extends AppCompatActivity {
 
     private List<Event> eventList = new ArrayList<Event>();
-    Button btnEvents;
+    Button btnEvents, btnMap;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,6 +22,12 @@ public class TurismActivity extends AppCompatActivity {
         btnEvents = findViewById(R.id.btnEvents);
         btnEvents.setOnClickListener(view ->{
             Intent i = new Intent(TurismActivity.this, EventsActivity.class);
+            startActivity(i);
+        });
+        btnMap = findViewById(R.id.btnMap);
+        btnMap.setOnClickListener(view -> {
+            Intent i = new Intent(TurismActivity.this, MapActivity.class);
+            i.putExtra("kind", "common");
             startActivity(i);
         });
     }

@@ -11,19 +11,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
     private List<Event> mData;
     private final LayoutInflater inflater;
-    final onItemClickListener listener;
+    final ListAdapter.OnItemClickListener listener;
+    final ListAdapter.OnItemClickListener listener2;
 
-    public interface onItemClickListener {
-        void onItemClick(Event item);
+    public interface OnItemClickListener {
+        void onItemClick(Event event);
     }
-
-    public ListAdapter(List<Event> itemList, Context context, onItemClickListener listener) {
+    public ListAdapter(List<Event> itemList, Context context, ListAdapter.OnItemClickListener listener,
+                       ListAdapter.OnItemClickListener listener2) {
         this.inflater = LayoutInflater.from(context);
         this.mData = itemList;
         this.listener = listener;
+        this.listener2 = listener2;
     }
 
     @Override
@@ -47,7 +49,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         mData = items;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView dataStart, dataEnd, name, place;
 
         ViewHolder(View itemView) {
@@ -57,12 +59,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             dataStart = itemView.findViewById(R.id.dataStart);
             dataEnd = itemView.findViewById(R.id.dataEnd);
         }
-
-        void bindData(final Event item) {
-            name.setText(item.getName());
-            dataStart.setText(String.format("Del: %s", item.getStDate()));
-            dataEnd.setText(String.format("Al: %s", item.getEndDate()));
-            place.setText(item.getStreetAddress());
+        void bindData(final Event event) {
+            name.setText(event.getName());
+            dataStart.setText(String.format("Del: %s", event.getStDate()));
+            dataEnd.setText(String.format("Al: %s", event.getEndDate()));
+            place.setText(event.getStreetAddress());
+            itemView.findViewById(R.id.btnSeeMap).setOnClickListener( v -> listener.onItemClick(event));
+            itemView.findViewById(R.id.btnWebSite).setOnClickListener(v -> listener2.onItemClick(event));
         }
     }
 }

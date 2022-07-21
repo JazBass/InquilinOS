@@ -1,5 +1,6 @@
 package com.mycityhome.InquilinOs;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.JsonReader;
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class EventsActivity extends AppCompatActivity {
 
     private List<Event> listEvents;
     ProgressBar progressBar;
-    TextView txtEvents;
+    TextView txtEvents, txtWait;
     RecyclerView recyclerView;
     String TAG = "json";
 
@@ -38,6 +40,8 @@ public class EventsActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         txtEvents = findViewById(R.id.txtEvents);
         txtEvents.setVisibility(View.INVISIBLE);
+        txtWait = findViewById(R.id.txtWait);
+        txtWait.setVisibility(View.VISIBLE);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.INVISIBLE);
         new JsonTask().execute();
@@ -49,7 +53,6 @@ public class EventsActivity extends AppCompatActivity {
         private String name, longitude, latitude, eventUrl, description,dtStart,dtEnd,stHour,endHour,
                 locality,streetAddress,postalCode,price;
         private String[] myAddress;
-        private List<Event> events;
 
         @Override
         protected void onPreExecute() {
@@ -80,7 +83,7 @@ public class EventsActivity extends AppCompatActivity {
         }
 
         public List<Event> readEventArray(JsonReader reader) throws IOException {
-            events = new ArrayList<>();
+            List<Event> events = new ArrayList<>();
             reader.beginArray();
             while (reader.hasNext()) {
                 events.add(readEvent(reader));
@@ -115,7 +118,7 @@ public class EventsActivity extends AppCompatActivity {
                     case "price":
                         price = reader.nextString();
                         break;
-                    case "url":
+                    case "link":
                         eventUrl = reader.nextString();
                         break;
                     case "latitude":
@@ -132,13 +135,9 @@ public class EventsActivity extends AppCompatActivity {
                         break;
                 }
             }
-            double mLatitude = Double.parseDouble(latitude);
-            double mLongitude = Double.parseDouble(longitude);
             reader.endObject();
-            LatLng location = new LatLng(mLatitude, mLongitude);
-            Log.i(TAG, "latlon: "+location);
-            return new Event(name, description, url, myAddress, dtStart, dtEnd, stHour,
-                    endHour, location, price, streetAddress);
+            return new Event(name, description, eventUrl, myAddress, dtStart, dtEnd, stHour,
+                    endHour, latitude, longitude, price, streetAddress);
         }
 
         private String readArea(JsonReader reader) throws IOException {
@@ -174,19 +173,31 @@ public class EventsActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             init();
-            Log.i(TAG, "Se han guardado " + events.size() + "eventos");
         }
     }
 
     public void init() {
         progressBar.setVisibility(View.INVISIBLE);
+        txtWait.setVisibility(View.INVISIBLE);
         txtEvents.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.VISIBLE);
-        ListAdapter listAdapter = new ListAdapter((listEvents), this, item -> {
-        });
+        ListAdapter listAdapter = new ListAdapter(listEvents, this, this::moveToMap, this::goToWebsite);
+        recyclerView.setAdapter(listAdapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(listAdapter);
     }
 
+    private void moveToMap(Event event) {
+        Intent intent = new Intent(this, MapActivity.class);
+        intent.putExtra("kind", "custom");
+        intent.putExtra("ListElement", (Serializable) event);
+        startActivity(intent);
+    }
+
+    private void goToWebsite(Event event){
+        Intent intent = new Intent(this, WebsiteActivity.class);
+        intent.putExtra("url",event.getUrl());
+        Log.i("url", "event " + event.getUrl());
+        startActivity(intent);
+    }
 }

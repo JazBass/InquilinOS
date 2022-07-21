@@ -45,9 +45,9 @@
                     android:layout_height="207dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginBottom="20dp"
-                    android:background="@drawable/round_button_blue"
+                    android:background="@drawable/round_button_bluelite"
                     android:text="@string/info"
-                    android:textColor="@color/orangeMC"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toTopOf="@+id/btnAbout"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -57,9 +57,9 @@
                     android:layout_height="156dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="30dp"
-                    android:background="@drawable/round_button_orange"
+                    android:background="@drawable/round_button_orangelite"
                     android:text="Button"
-                    android:textColor="@color/orangeMC"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toTopOf="@+id/btnInfo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.493"
@@ -71,9 +71,9 @@
                     android:layout_height="241dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/round_button_orange"
+                    android:background="@drawable/round_button_orangelite"
                     android:text="@string/services"
-                    android:textColor="@color/orangeMC"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button7" />
 
@@ -83,8 +83,9 @@
                     android:layout_height="245dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginBottom="24dp"
-                    android:background="@drawable/round_button_orange"
+                    android:background="@drawable/round_button_orangelite"
                     android:text="@string/about"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -119,7 +120,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="24dp"
-                    android:background="@drawable/round_button_blue"
+                    android:background="@drawable/round_button_bluelite"
                     android:contentDescription="TODO"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

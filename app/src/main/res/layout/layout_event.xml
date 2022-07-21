@@ -6,6 +6,7 @@
     android:animateLayoutChanges="true"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
+    android:backgroundTint="#f0f2f5"
     app:cardUseCompatPadding="true"
     >
     <LinearLayout
@@ -22,12 +23,13 @@
 
             <LinearLayout
                 android:id="@+id/LinearLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
                 android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/LinearLayout1"
                 android:orientation="vertical">
 
                 <TextView
@@ -35,6 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
+                    android:fontFamily="@string/material_motion_easing_linear"
                     android:text="NOMBRE"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -75,6 +78,28 @@
                     android:textStyle="bold" />
             </LinearLayout>
         </RelativeLayout>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
 
+            <Button
+                android:id="@+id/btnSeeMap"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/round_button_blue"
+                android:text="Ver en el mapa"
+                android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/btnWebSite"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/round_button_orange"
+                android:textColor="@color/white"
+                android:text="Ir al sitio web" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
