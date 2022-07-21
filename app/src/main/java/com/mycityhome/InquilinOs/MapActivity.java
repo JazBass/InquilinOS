@@ -76,6 +76,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 getSupportFragmentManager().findFragmentById(R.id.mapView);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
+        /*--------------take the extra, if comes from event we take de event location--------------*/
         Intent i = getIntent();
         if (i.getStringExtra("kind").equals("custom")){
             isCustom = true;
