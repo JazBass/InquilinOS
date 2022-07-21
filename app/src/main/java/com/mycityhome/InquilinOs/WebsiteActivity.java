@@ -20,3 +20,4 @@ public class WebsiteActivity extends AppCompatActivity {
         webView.loadUrl(url);
     }
 }
+
