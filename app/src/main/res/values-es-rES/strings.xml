@@ -113,4 +113,11 @@
         quedar sumergido bajo las aguas de la Gran Presa de Asuán.
         El Templo de Debod se ha convertido en un lugar precioso en el que disfrutar de la tranquilidad y el
         relax, sobre todo a última hora de la tarde, cuando puedes contemplar una puesta de sol única.</string>
+
+    <string name="events">Eventos</string>
+    <string name="searchingEvent">Buscando eventos en Madrid</string>
+    <string name="touristMap">Mapa turístico</string>
+    <string name="nextEvents">Próximos eventos</string>
+    <string name="seeInMap">Ver en el mapa</string>
+    <string name="goToWeb">Ir al sitio web</string>
 </resources>

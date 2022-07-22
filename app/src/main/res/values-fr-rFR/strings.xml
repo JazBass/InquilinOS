@@ -40,4 +40,11 @@
     <string name="mercadoSanMiguelExp"></string>
     <string name="plazaVillaExp"></string>
     <string name="temploDebodExp"></string>
+
+    <string name="events">Événements</string>
+    <string name="searchingEvent">En recherche d\'événements à Madrid</string>
+    <string name="touristMap">Carte Touristique</string>
+    <string name="nextEvents">Prochaines événements</string>
+    <string name="seeInMap">Voir sur la carte</string>
+    <string name="goToWeb">Aller sur le site web</string>
 </resources>

@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Stack;
 
 import okhttp3.Call;
@@ -285,7 +287,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         if (amplitude > 0 && amplitude < 1000000) {
             decibels = convertDb(amplitude);
             if (decibels > 30) {
-                txtDecibels.setText(String.format("%.2f", decibels) + " DB");
+                txtDecibels.setText(String.format(Locale.US,"%.2f", decibels));
                 decibelsCounter = new Stack<>();
                 int count = 0;
                 convertDb(mRecorder.getMaxAmplitude());
@@ -314,14 +316,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     //startCounting(decibels);
     //hardNoise(decibels);
 
-    private void getMedia(Stack<Double> decibelsCounter){
-
-    }
-
-    private void sendDecibArray(double[] db) {
-        Toast.makeText(this, "Aqui hay fiesta", Toast.LENGTH_LONG).show();
-    }
-
     public double getAmplitude() {
         if (mRecorder != null)
             return (mRecorder.getMaxAmplitude());
@@ -345,7 +339,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     }
     */
     private void hardNoise(double dbl) {
-        //TODO: fun Enviar mensaje a CRM
+        //TODO: fun send message to CRM
         turnOffLight();
     }
 

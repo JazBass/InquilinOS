@@ -76,7 +76,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 getSupportFragmentManager().findFragmentById(R.id.mapView);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
-        /*--------------take the extra, if comes from event we take de event location--------------*/
+        /*Take the extra, if comes from event we take de event location and isCustom=true*/
         Intent i = getIntent();
         if (i.getStringExtra("kind").equals("custom")){
             isCustom = true;
@@ -95,6 +95,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .zoom(14)
                 .build();
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(position));
+        //Asking for permissions
         try {
             if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
                     PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
@@ -110,13 +111,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         } catch (SecurityException e) {
             e.printStackTrace();
         }
+        /*If isCustom this activity is started from EventsActivity, so we take event's location for mark*/
         if (isCustom){
             LatLng mLocation = new LatLng(Double.parseDouble(event.getLatitude()),Double.parseDouble(event.getLongitude()));
             MarkerOptions mark = new MarkerOptions()
                     .position(mLocation)
                     .title(event.getName());
             googleMap.addMarker(mark);
-        }else {
+        }
+        /*If isn't Custom, we mark all the locations saved in LocationsMadrid*/
+        else {
             for (LocationsMadrid location :
                     locationsMadrid) {
                 MarkerOptions mark = new MarkerOptions()

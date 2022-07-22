@@ -20,6 +20,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
     public interface OnItemClickListener {
         void onItemClick(Event event);
     }
+
     public ListAdapter(List<Event> itemList, Context context, ListAdapter.OnItemClickListener listener,
                        ListAdapter.OnItemClickListener listener2) {
         this.inflater = LayoutInflater.from(context);
@@ -45,9 +46,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
         holder.bindData(mData.get(position));
     }
 
+    /*
     public void setItems(List<Event> items) {
         mData = items;
     }
+     */
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView dataStart, dataEnd, name, place;
@@ -59,6 +62,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>  {
             dataStart = itemView.findViewById(R.id.dataStart);
             dataEnd = itemView.findViewById(R.id.dataEnd);
         }
+
         void bindData(final Event event) {
             name.setText(event.getName());
             dataStart.setText(String.format("Del: %s", event.getStDate()));

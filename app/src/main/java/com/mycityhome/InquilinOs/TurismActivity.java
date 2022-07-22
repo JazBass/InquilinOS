@@ -12,7 +12,6 @@ import java.util.List;
 
 public class TurismActivity extends AppCompatActivity {
 
-    private List<Event> eventList = new ArrayList<Event>();
     Button btnEvents, btnMap;
 
     @Override

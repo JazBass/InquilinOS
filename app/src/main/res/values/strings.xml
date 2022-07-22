@@ -39,4 +39,11 @@
     <string name="mercadoSanMiguelExp"></string>
     <string name="plazaVillaExp"></string>
     <string name="temploDebodExp"></string>
+
+    <string name="events">Events</string>
+    <string name="searchingEvent">Searching Events in Madrid</string>
+    <string name="touristMap">Tourist Map</string>
+    <string name="nextEvents">Next Events</string>
+    <string name="seeInMap">See in the map</string>
+    <string name="goToWeb">Go to website</string>
 </resources>

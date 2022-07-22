@@ -49,7 +49,6 @@ public class EventsActivity extends AppCompatActivity {
 
     private class JsonTask extends AsyncTask<Void, Void, String> {
 
-        private final String url = "https://tcpmch.herokuapp.com/events";
         private String name, longitude, latitude, eventUrl, description,dtStart,dtEnd,stHour,endHour,
                 locality,streetAddress,postalCode,price;
         private String[] myAddress;
@@ -63,7 +62,8 @@ public class EventsActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                URL myUrl = new URL(url);
+                final String url = "https://tcpmch.herokuapp.com/events";
+                final URL myUrl = new URL(url);
                 HttpURLConnection urlConnection = (HttpURLConnection) myUrl.openConnection();
                 InputStreamReader streamReader = new InputStreamReader(urlConnection.getInputStream());
                 listEvents = readJsonStream(streamReader);
@@ -74,11 +74,8 @@ public class EventsActivity extends AppCompatActivity {
         }
 
         public List<Event> readJsonStream(InputStreamReader streamReader) throws IOException {
-            JsonReader reader = new JsonReader(streamReader);
-            try {
+            try (JsonReader reader = new JsonReader(streamReader)) {
                 return readEventArray(reader);
-            } finally {
-                reader.close();
             }
         }
 
