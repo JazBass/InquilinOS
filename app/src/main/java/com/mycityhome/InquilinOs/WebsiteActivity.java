@@ -14,6 +14,8 @@ public class WebsiteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_website);
         WebView webView = findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
         Log.i("url", ""+url);

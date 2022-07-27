@@ -8,7 +8,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     private static double mEMA = 0.0;
     MediaRecorder mRecorder;
     double decibels;
-    Stack<Double> decibelsCounter;
+    Stack<Double> decibelsHistory = new Stack<>();
     final Handler mHandler = new Handler();
     final Runnable updater = this::measureDecibels;
     Thread runner;
@@ -98,6 +97,12 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             startActivity(i);
         });
 
+        btnAbout.setOnClickListener(view ->{
+            Intent i = new Intent(MainActivity.this, WebsiteActivity.class);
+            i.putExtra("url","https://www.mycityhome.es");
+            startActivity(i);
+        });
+
         /*-----------Toolbar for change language-----------*/
         setToolBar();
         setListener();
@@ -113,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             runner = new Thread(() -> {
                 while (runner != null) {
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(333);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -286,32 +291,31 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         double amplitude = mRecorder.getMaxAmplitude();
         if (amplitude > 0 && amplitude < 1000000) {
             decibels = convertDb(amplitude);
-            if (decibels > 30) {
+            if (decibels > 10) {
                 txtDecibels.setText(String.format(Locale.US,"%.2f", decibels));
-                decibelsCounter = new Stack<>();
-                int count = 0;
-                convertDb(mRecorder.getMaxAmplitude());
-                /*while (decibels >= 30) {
-                    try {
-                        Thread.sleep(5000);
-                    }catch (InterruptedException e) {
-                        e.printStackTrace();
+                decibels = convertDb(mRecorder.getMaxAmplitude());
+                if (decibelsHistory.size()>=12){
+                    if (decibelMedia(decibelsHistory)>10){
+                        //turnOffLight();
+                        Log.i("dec", "turnOffLight: Aqui se apago la luz de sus ojos");
+                        decibelsHistory.clear();
                     }
-                    if (count < 60) {
-                        decibelsCounter.push(decibels);
-                    } else {
-                        decibelsCounter.remove(0);
-                        decibelsCounter.push(decibels);
-                    }
-                    count++;
-                    getMedia(decibelsCounter);
-                    decibels = convertDb(mRecorder.getMaxAmplitude());
-                    Log.i("decib", "decibeles: " + decibels);
+                    Log.i("dec", "pop: "+ decibelsHistory.remove(0));
                 }
-                */
+                Log.i("dec", "push: "+decibelsHistory.push(decibels));
             }
             //startCounting();
         }
+    }
+
+    private double decibelMedia(Stack<Double> decHist) {
+        Double med = 0.00;
+        for (int i = 0; i < decHist.size(); i++) {
+            med += decHist.get(i);
+            Log.i("dec", "media: "+med);
+        }
+        Log.i("dec", "decibelMedia: "+med/decHist.size());
+        return Math.round(((med/decHist.size())*100d)/100d);
     }
     //startCounting(decibels);
     //hardNoise(decibels);
@@ -338,10 +342,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         };
     }
     */
-    private void hardNoise(double dbl) {
-        //TODO: fun send message to CRM
-        turnOffLight();
-    }
 
     /*----------------------Sending http request for turn off lights----------------------*/
     private void turnOffLight() {
