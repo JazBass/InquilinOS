@@ -46,7 +46,6 @@ public class EventsActivity extends AppCompatActivity {
         recyclerView.setVisibility(View.INVISIBLE);
         new JsonTask().execute();
     }
-
     private class JsonTask extends AsyncTask<Void, Void, String> {
 
         private String name, longitude, latitude, eventUrl, description,dtStart,dtEnd,stHour,endHour,
@@ -56,7 +55,7 @@ public class EventsActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
+    //La puta que te pario Github de mierda
         }
 
         @Override
