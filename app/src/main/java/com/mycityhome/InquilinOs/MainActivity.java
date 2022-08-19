@@ -4,26 +4,24 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,12 +39,11 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
     /*----------------------Buttons and views----------------------*/
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
     Toolbar toolbar;
-    Button btnInfo, btnAbout, btnServices;
-    ImageButton btnContact;
-    TextView txtDecibels, txtSelectLanguage;
+    CardView btnInfo, btnAbout, btnContact;
+    FloatingActionButton btnServices;
+    TextView txtDecibels;
+    TextView txtInfo, txtWebsite, txtEvents;
     /*-------------------------Permissions----------------------------*/
     int PERMISSIONS_CODE = 1;
     String[] Permissions = {
@@ -55,9 +52,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
-    /*---------------Decibels measure---------------*/
-    static final private double EMA_FILTER = 0.6;
-    private static double mEMA = 0.0;
     MediaRecorder mRecorder;
     double decibels;
     Stack<Double> decibelsHistory = new Stack<>();
@@ -71,41 +65,37 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_initial);
+        setContentView(R.layout.new_layout);
 
         /*----------------------Buttons and views----------------------*/
-        navigationView = findViewById(R.id.navigationView);
-        toolbar = findViewById(R.id.toolbar);
-        drawerLayout = findViewById(R.id.drawerLayout);
+        toolbar = findViewById(R.id.my_toolbar);
         btnContact = findViewById(R.id.btnContact);
         btnAbout = findViewById(R.id.btnAbout);
         btnInfo = findViewById(R.id.btnInfo);
         btnServices = findViewById(R.id.btnServices);
-        txtDecibels = findViewById(R.id.txtDcbl);
-        txtSelectLanguage = findViewById(R.id.txtSelectLanguage);
+        txtEvents = findViewById(R.id.txtEvents);
+        txtInfo = findViewById(R.id.txtInfo);
+        txtWebsite = findViewById(R.id.txtWebsite);
+        //txtDecibels = findViewById(R.id.txtDcbl);
+
+        setToolBar();
 
         /*--------------------------Listeners--------------------------*/
         btnInfo.setOnClickListener(view -> {
             Intent i = new Intent(this, TurismActivity.class);
             startActivity(i);
         });
-        btnServices.setOnClickListener(view -> {
-
-        });
-        btnContact.setOnClickListener(view -> {
+        btnServices.setOnClickListener(view -> launchLanguageFragment());
+        btnAbout.setOnClickListener(view -> {
             Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/34633335208?text=Hola"));
             startActivity(i);
         });
 
-        btnAbout.setOnClickListener(view ->{
+        btnContact.setOnClickListener(view ->{
             Intent i = new Intent(MainActivity.this, WebsiteActivity.class);
             i.putExtra("url","https://www.mycityhome.es");
             startActivity(i);
         });
-
-        /*-----------Toolbar for change language-----------*/
-        setToolBar();
-        setListener();
 
         /*--------------------Permissions request--------------------*/
         if (!hasPermissions(Permissions)) {
@@ -130,57 +120,65 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         }
     }
 
-    /*------------------------Left Menu------------------------*/
-    private void setListener() {
-        navigationView.setNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.french:
-                    context = LanguageManager.setLocale(MainActivity.this, "fr");
-                    resources = context.getResources();
-                    break;
-                case R.id.english:
-                    context = LanguageManager.setLocale(MainActivity.this, "en");
-                    resources = context.getResources();
-                    break;
-                case R.id.spanish:
-                    context = LanguageManager.setLocale(MainActivity.this, "es");
-                    resources = context.getResources();
-                    break;
-            }
-            refreshLanguage();
-            drawerLayout.close();
-            Toast.makeText(MainActivity.this, resources.getString(R.string.newLanguage), Toast.LENGTH_SHORT).show();
-            return false;
-        });
-    }
-
-    public void refreshLanguage() {
-        btnAbout.setText(resources.getString(R.string.about));
-        btnInfo.setText(resources.getString(R.string.info));
-        btnServices.setText(resources.getString(R.string.services));
-    }
-
     private void setToolBar() {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             ActionBar actionBar = getSupportActionBar();
-            actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setDisplayShowCustomEnabled(true);
-            actionBar.setDisplayUseLogoEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_lang);
-            //TODO: Change logo size
+            actionBar.setTitle("Hola");
         }
     }
 
-    @Override
+    private void launchLanguageFragment() {
+        String lang = Locale.getDefault().getLanguage();
+        Log.i("LANG", lang);
+        BlankFragment blankFragment = new BlankFragment(lang);
+        findViewById(R.id.txtWelcome).setVisibility(View.GONE);
+        btnAbout.setVisibility(View.GONE);
+        btnContact.setVisibility(View.GONE);
+        btnInfo.setVisibility(View.GONE);
+        btnServices.setVisibility(View.GONE);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_in_left);
+        fragmentManager.popBackStack();
+        fragmentTransaction
+                .replace(R.id.constraintLayout, blankFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    public void setLanguage(String lang){
+        switch (lang) {
+            case "French":
+                context = LanguageManager.setLocale(MainActivity.this, "fr");
+                resources = context.getResources();
+                break;
+            case "English":
+                context = LanguageManager.setLocale(MainActivity.this, "en");
+                resources = context.getResources();
+                break;
+            case "Spanish":
+                context = LanguageManager.setLocale(MainActivity.this, "es");
+                resources = context.getResources();
+                break;
+        }
+        refreshLanguage();
+        Toast.makeText(MainActivity.this, resources.getString(R.string.newLanguage), Toast.LENGTH_SHORT).show();
+    }
+
+    public void refreshLanguage() {
+        txtWebsite.setText(resources.getString(R.string.yourStay));
+        txtInfo.setText(resources.getString(R.string.about));
+        txtEvents.setText(resources.getString(R.string.info));
+    }
+
+    /*@Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            drawerLayout.openDrawer(GravityCompat.START);
+            constraintLayout.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     /*----------------------Permissions request----------------------*/
 
@@ -230,12 +228,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             mRecorder.setOutputFile("/dev/null");
             try {
                 mRecorder.prepare();
-            } catch (java.io.IOException ioe) {
+            } catch (java.io.IOException | java.lang.SecurityException e) {
                 android.util.Log.e("[Monkey]", "IOException: " +
-                        android.util.Log.getStackTraceString(ioe));
-
-            } catch (java.lang.SecurityException e) {
-                android.util.Log.e("[Monkey]", "SecurityException: " +
                         android.util.Log.getStackTraceString(e));
             }
             try {
@@ -277,10 +271,12 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
          *(32767/0.6325) 51805.5336 o si 100db entonces 46676.6381
          */
         double EMA_FILTER = 0.6;
-        SharedPreferences sp = this.getSharedPreferences("device-base", MODE_PRIVATE);
-        double amp = (double) sp.getFloat("amplitude", 0);
+        //SharedPreferences sp = this.getSharedPreferences("device-base", MODE_PRIVATE);
+        //double amp = (double) sp.getFloat("amplitude", 0);
+        /*---------------Decibels measure---------------*/
+        //static final private double EMA_FILTER = 0.6;
+        double mEMA = 0.0;
         double mEMAValue = EMA_FILTER * amplitude + (1.0 - EMA_FILTER) * mEMA;
-        //Log.i("db", amp+"");
         //Asumiendo que la presión de referencia mínima es 0.000085 Pascal
         // (en la mayoría de los teléfonos) es igual a 0 db
         // TODO: Find out the minimum reference in Motorola
@@ -292,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         if (amplitude > 0 && amplitude < 1000000) {
             decibels = convertDb(amplitude);
             if (decibels > 10) {
-                txtDecibels.setText(String.format(Locale.US,"%.2f", decibels));
+                //txtDecibels.setText(String.format(Locale.US,"%.2f", decibels));
                 decibels = convertDb(mRecorder.getMaxAmplitude());
                 if (decibelsHistory.size()>=12){
                     if (decibelMedia(decibelsHistory)>10){
@@ -320,29 +316,19 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     //startCounting(decibels);
     //hardNoise(decibels);
 
-    public double getAmplitude() {
+    /*public double getAmplitude() {
         if (mRecorder != null)
             return (mRecorder.getMaxAmplitude());
         else
             return 0;
 
-    }
+    }*/
 
-    public double getAmplitudeEMA() {
+    /*public double getAmplitudeEMA() {
         double amp = getAmplitude();
         mEMA = EMA_FILTER * amp + (1.0 - EMA_FILTER) * mEMA;
         return mEMA;
-    }
-
-    /*----------------------------Start counting decibels----------------------------*/
-   /*
-   public void startCounting() {
-        Runnable mRunnable = () -> {
-
-        };
-    }
-    */
-
+    }*/
     /*----------------------Sending http request for turn off lights----------------------*/
     private void turnOffLight() {
         String http = "https://tcpmch.herokuapp.com/?client=Oficina&cmd=toggleLight";
