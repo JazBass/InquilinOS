@@ -1,0 +1,22 @@
+[33m8df2e4a[m[33m ([m[1;36mHEAD -> [m[1;32mnewInitialView[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m new url for the map
+[33mfb10d51[m add strings xml
+[33m095759e[m buttons in RecyclerView, custom map and webview for events
+[33m445964a[m buttons in RecyclerView, custom map and webview for events
+[33m8877ac4[m buttons in RecyclerView, custom map and webview for events
+[33m48ce57e[m buttons in RecyclerView, custom map and webview for events
+[33mb4fbbbc[m fixing address bug
+[33m09c027d[m Recycler list for events
+[33mfe6599e[m Recycler list for events
+[33m0fbaed1[m Json reader for Madrid's Tourism API
+[33mc468ebc[m New markers in da map
+[33ma062f26[m New Map activity for touristic information and news Strings. Have to translate yet.
+[33m2b49a3d[m Merge remote-tracking branch 'origin/master'
+[33m818fd83[m Not much but I wanted to commit
+[33m3f86eec[m Update README.md
+[33mbfaddaf[m Little changes
+[33m01a213c[m Merge remote-tracking branch 'origin/master'
+[33m8d92940[m New function and class (LanguageManager) for change languages
+[33m9603880[m Readme file
+[33m361506b[m Add Buttom for WhatsApp and Decibels measurer
+[33m87d9be0[m Add permissions request
+[33m619b19e[m Initial commit

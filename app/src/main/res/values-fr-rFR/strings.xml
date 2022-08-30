@@ -9,7 +9,7 @@
     <string name="newLanguage">Nouvelle langue sélectionnée: Français</string>
     <string name="catedralSantaMaria">Cathédrale Santa Maria</string>
     <string name="palacioReal">Palais Royal</string>
-    <string name="puertaAlcala">Porte "d'Alcala"</string>
+    <string name="puertaAlcala">Porte "d\'Alcala"</string>
     <string name="cibeles">Cibeles</string>
     <string name="puertaSol">Sol</string>
     <string name="elRetiro">Retiro Parque</string>
@@ -24,22 +24,112 @@
     <string name="plazaVilla">Plaza Villa</string>
     <string name="temploDebod">Temple Debos</string>
 
-    <string name="catedralSantaMariaExp"></string>
-    <string name="palacioRealExp"></string>
-    <string name="puertaAlcalaExp"></string>
-    <string name="cibelesExp"></string>
-    <string name="puertaSolExp"></string>
-    <string name="elRetiroExp"></string>
-    <string name="sanJeronimoExp"></string>
-    <string name="elPradoExp"></string>
-    <string name="reinaSofiaExp"></string>
-    <string name="museoThyssenExp"></string>
-    <string name="plazaTorosExp"></string>
-    <string name="plazaMayorExp"></string>
-    <string name="plazaEspaniaExp"></string>
-    <string name="mercadoSanMiguelExp"></string>
-    <string name="plazaVillaExp"></string>
-    <string name="temploDebodExp"></string>
+    <string name="catedralSantaMariaExp">
+        La cathédrale de l\'Almudena est
+         considéré comme l\'édifice religieux le plus important à voir à Madrid.
+         Construit sur les vestiges d\'une ancienne mosquée et la première cathédrale à être consacrée en dehors de Rome
+         en 1993, par le pape Jean-Paul II, ce temple dédié à la Vierge Marie se distingue à l\'extérieur
+         pour son énorme dôme, tandis que les vitraux à l\'intérieur créent une atmosphère magique.
+    </string>
+    <string name="palacioRealExp">
+        Juste en face de la cathédrale de l\'Almudena, sur la Plaza de la Armería,
+         est l\'entrée du Palais Royal, résidence officielle des rois d\'Espagne jusqu\'à
+         a déménagé au Palacio de la Zarzuela, qui est aussi un autre des meilleurs endroits à visiter à Madrid.
+         Cet immense palais, le plus grand d\'Europe occidentale, est maintenant utilisé pour le tourisme et
+         il est fermé pour les cérémonies d\'État et les actes officiels et avant ou après l\'entrée du complexe, nous vous recommandons
+         allez à la Plaza de Oriente et surtout, aux jardins Sabatini, pour prendre de bonnes photos du palais.
+    </string>
+    <string name="puertaAlcalaExp">
+        A quelques mètres de la Plaza de Cibeles, en remontant la Calle Alcalá,
+         vous arriverez à la Puerta de Alcalá, la plus célèbre des cinq anciennes portes royales qui donnaient
+         accès à la ville et à un autre des plus beaux endroits à voir à Madrid.
+    </string>
+    <string name="cibelesExp">
+        Plaza de Cibeles, présidée par la belle Fuente de las Cibeles,
+         lieu des titres du Real Madrid, est un autre des lieux les plus emblématiques à visiter
+         à Madrid.
+         En plus d\'observer de loin le char tiré par des lions de la déesse Cibeles, dans ce rond-point vous avez
+         plusieurs bâtiments à prendre en compte comme le Palacio de Buenavista, datant de 1777, le Palacio
+         de Linares, la Banque d\'Espagne et surtout l\'imposant Palacio de Cibeles, qui abrite le
+         mairie et a un point de vue fantastique sur sa terrasse qui offre des visites du Parque del
+         Retirez-vous dans les gratte-ciel du quartier financier.
+    </string>
+    <string name="puertaSolExp">
+        Dans cette place il y a plusieurs points d\'intérêt tels que la statue
+         del Oso y el Madroño (symbole de Madrid), la célèbre affiche publicitaire de Tío Pepe et la statue
+         équestre de Carlos III, situé en plein centre.
+         Bien que le lieu le plus emblématique de ce vaste espace, actif 24h/24, soit la Casa
+         La Poste, dont l\'horloge sonne les fameux carillons de fin d\'année, et juste à côté se trouve un
+         petite plaque de granit marquant le « kilomètre 0 » de l\'Espagne.
+    </string>
+    <string name="elRetiroExp">
+        Une autre des meilleures choses à faire à Madrid est de passer un agréable
+         promenez-vous dans le célèbre parc du Retiro, en vous déconnectant du bruit et du stress de la ville.
+         Dans ce parc historique, vous trouverez d\'un immense étang artificiel, qui a dans l\'un des
+         côté du Monument à Alphonse XII et où vous pouvez louer un petit bateau pour vous promener,
+         au magnifique Crystal Palace, qui vous fera tomber amoureux au premier regard.
+    </string>
+    <string name="sanJeronimoExp">
+        L\'ancien monastère de San Jerónimo el Real, populairement connu
+         connu sous le nom de "Los Jerónimos", était l\'un des monastères les plus importants de Madrid, gouverné à l\'origine
+         par l\'Ordre de Saint Jérôme. A côté se trouvait la soi-disant salle royale, agrandie plus tard en
+         Palacio del Buen Retiro à l\'époque de Philippe IV.
+    </string>
+    <string name="elPradoExp">
+        L\'un des musées les plus importants au monde et un autre des lieux qui
+         incontournable à visiter à Madrid.
+         Avec des milliers d\'œuvres intéressantes, parmi les meilleures œuvres à voir dans le musée du Prado sont
+         Les Trois Grâces de Rubens, Le Chevalier avec la main sur la poitrine d\'El Greco, La Maja nue
+         et El 3 de mayo en Madrid de Goya, Le Jardin des délices d\'El Bosco et le chef-d\'œuvre
+         Les Ménines de Vélasquez.
+    </string>
+    <string name="reinaSofiaExp">
+        Avec plus de 4 millions de visiteurs par an, ce musée a beaucoup
+         œuvres de Dalí et Miró, parmi de nombreux autres artistes, bien que rien n\'éclipse son joyau, la peinture
+         du Guernica de Picasso, l\'un des grands chefs-d\'œuvre de l\'histoire de la peinture.
+    </string>
+    <string name="museoThyssenExp">
+        Située sur le Paseo del Arte, sa collection permanente retrace l\'histoire
+         de la peinture européenne du Moyen Âge à la fin du XXe siècle. Les Primitifs italiens,
+         la Renaissance allemande, la peinture américaine du XIXe siècle, l\'impressionnisme, l\'expressionnisme allemand
+         et le constructivisme russe sont les écoles et les mouvements les plus représentés dans
+         le musée.
+    </string>
+    <string name="plazaTorosExp">
+        Avec une capacité de plus de 23 000 spectateurs, la Plaza de Toros
+         de Las Ventas est le plus grand d\'Espagne et le troisième avec la plus grande capacité au monde, derrière
+         de celles du Mexique et de Valence (Venezuela).
+         La place, construite en 1929 sur le terrain dit
+         "Las Ventas del Espíritu Santo", a été conçu dans un style néo-mudéjar avec des briques rouges apparentes
+         et il a un anneau de 61 mètres de diamètre.
+    </string>
+    <string name="plazaMayorExp">
+        Cette belle place rectangulaire de 129 mètres de long et 94 de large,
+         Il est entouré de bâtiments importants tels que la Casa de la Panadería et d\'autres joyaux tels que l\'Arco
+         de Cuchilleros et la statue de Philippe III, cadeau du duc de Florence.
+    </string>
+    <string name="plazaEspaniaExp">
+        Bien qu\'il ne soit pas le plus beau de la ville, il vaut la peine d\'investir un
+         le temps de voir plusieurs monuments et bâtiments historiques comme la Tour de Madrid, 142 mètres
+         haut, la Casa Gallardo de style moderniste, le Monument à Miguel de Cervantes et le
+         bâtiment de la Compagnie minière des Asturies.
+    </string>
+    <string name="mercadoSanMiguelExp">
+        Situé au cœur de la ville, le marché de San Miguel est un point
+         lieu de rencontre des amateurs de bonne gastronomie et l\'un des marchés les plus emblématiques
+         que voir à madrid
+    </string>
+    <string name="plazaVillaExp">
+        Lorsque vous quittez le marché de San Miguel, vous pouvez vous promener dans les rues du célèbre
+         comme Madrid de los Austrias, où se distingue la belle Plaza de la Villa.
+    </string>
+    <string name="temploDebodExp">
+        Cet ancien temple égyptien de plus de 2 200 ans a été
+         un cadeau de l\'Égypte à l\'Espagne pour l\'aide qu\'elle a apportée à l\'époque pour sauver Abou Simbel de
+         submergé sous les eaux du haut barrage d\'Assouan.
+         Le temple de Debod est devenu un bel endroit pour profiter de la tranquillité et
+         détendez-vous, surtout en fin d\'après-midi, lorsque vous pourrez admirer un coucher de soleil unique.
+    </string>
 
     <string name="events">Événements</string>
     <string name="searchingEvent">En recherche d\'événements à Madrid</string>
@@ -47,4 +137,7 @@
     <string name="nextEvents">Prochaines événements</string>
     <string name="seeInMap">Voir sur la carte</string>
     <string name="goToWeb">Aller sur le site web</string>
+
+    <string name="welcome">Bienvenu</string>
+    <string name="yourStay">Votre sejour</string>
 </resources>

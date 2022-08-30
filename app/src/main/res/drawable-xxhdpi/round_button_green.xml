@@ -5,5 +5,5 @@
         android:drawable="@drawable/wp1"/>
     <item
         android:state_pressed="true"
-        android:drawable="@drawable/round_button_orange"/>
+        android:drawable="@drawable/round_button_white"/>
 </selector>

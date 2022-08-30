@@ -4,60 +4,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center">
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/my_toolbar_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp">
-    <Button
-        android:id="@+id/btnMap"
-        android:layout_width="364dp"
-        android:layout_height="226dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/madrid2"
-        android:scaleType="fitCenter"
-        android:text="@string/touristMap"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    </androidx.cardview.widget.CardView>
-    </LinearLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:background="#031059"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent"/>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center">
-    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp">
-    <Button
-        android:id="@+id/btnEvents"
-        android:layout_width="364dp"
-        android:layout_height="226dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/madrid1"
-        android:scaleType="fitCenter"
-        android:text="@string/nextEvents"
-        android:textColor="@color/white"
-        android:textSize="24sp"
+        android:layout_height="500dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent" />
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnMap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/common_margin"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white_brayner"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/txtSeeInMap"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgEvents"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/description_img_photo"
+                        android:paddingTop="5dp"
+                        android:src="@drawable/ico_mapa"
+                        app:layout_constraintBottom_toTopOf="@id/txtEvents"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtSeeInMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/common_margin"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/seeInMap"
+                    android:textAlignment="center"
+                    android:textColor="#031059"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnEvents"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/common_margin"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white_brayner"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/txtNextEvents"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgEvents1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/description_img_photo"
+                        android:src="@drawable/ico_calend"
+                        app:layout_constraintBottom_toTopOf="@id/txtEvents"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtNextEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/common_margin"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/nextEvents"
+                    android:textAlignment="center"
+                    android:textColor="#031059"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

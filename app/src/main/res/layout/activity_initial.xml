@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
     <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
+        android:id="@+id/drawerLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
@@ -21,71 +22,43 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/my_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/blueBack"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/blueMCDark"
                 android:elevation="4dp"
-                android:paddingEnd="55dp"
-                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                tools:ignore="RtlSymmetry"/>
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/btnInfo"
-                    android:layout_width="185dp"
-                    android:layout_height="207dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/round_button_bluelite"
-                    android:text="@string/info"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/btnAbout"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <Button
+                <androidx.cardview.widget.CardView
                     android:id="@+id/button7"
                     android:layout_width="0dp"
-                    android:layout_height="156dp"
-                    android:layout_marginBottom="30dp"
-                    android:background="@drawable/round_button_orangelite"
-                    android:text=""
+                    android:layout_height="150dp"
+                    android:layout_marginStart="@dimen/common_margin"
+                    android:layout_marginEnd="@dimen/common_margin"
+                    android:layout_marginTop="@dimen/common_margin"
+                    android:layout_marginBottom="@dimen/common_half_margin"
+                    android:backgroundTint="#f1441c"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/btnInfo"
-                    app:layout_constraintEnd_toEndOf="@+id/btnServices"
-                    app:layout_constraintStart_toStartOf="@+id/btnInfo"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/btnServices"
-                    android:layout_width="163dp"
-                    android:layout_height="241dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/round_button_orangelite"
-                    android:text="@string/services"
-                    android:textColor="@color/white"
+                    app:cardCornerRadius="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btnInfo" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <Button
-                    android:id="@+id/btnAbout"
-                    android:layout_width="163dp"
-                    android:layout_height="245dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="36dp"
-                    android:background="@drawable/round_button_orangelite"
-                    android:text="@string/about"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="15:30"
+                        android:textColor="@color/white"
+                        android:textSize="70dp" />
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/txtDcbl"
@@ -97,33 +70,110 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <!--
-                <Button
-                    android:id="@+id/btnContact"
-                    android:layout_width="163dp"
-                    android:layout_height="207dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/round_button_blue"
-                    android:drawableStart="@drawable/wpbutton"
-                    android:textColor="@color/orangeMC"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-                -->
-
-                <ImageButton
-                    android:id="@+id/btnContact"
-                    android:layout_width="185dp"
-                    android:layout_height="207dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="36dp"
-                    android:background="@drawable/round_button_bluelite"
+                <LinearLayout
+                    android:id="@+id/bigLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnServices"
-                    app:srcCompat="@drawable/wpbutton" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/button7">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/common_margin"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <androidx.constraintlayout.widget.Guideline
+                                android:id="@+id/guideline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintGuide_percent="0.5"
+                                android:orientation="vertical" />
+                            <Button
+                                android:id="@+id/btnInfo1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="@dimen/common_margin"
+                                android:layout_marginEnd="@dimen/common_half_margin"
+                                android:layout_marginBottom="@dimen/common_half_margin"
+                                android:background="@drawable/round_button_blue"
+                                android:text="@string/info"
+                                android:textColor="@color/white"
+                                app:layout_constraintEnd_toEndOf="@+id/guideline"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            <Button
+                                android:id="@+id/btnServices1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="@dimen/common_half_margin"
+                                android:layout_marginEnd="@dimen/common_margin"
+                                android:background="@drawable/round_button_orange"
+                                android:text="@string/services"
+                                android:textColor="@color/white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/guideline"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/common_half_margin"
+                        android:layout_marginBottom="@dimen/common_margin"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <androidx.constraintlayout.widget.Guideline
+                                android:id="@+id/guideline1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintGuide_percent="0.5"
+                                android:orientation="vertical" />
+
+                            <Button
+                                android:id="@+id/btnAbout1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="@dimen/common_margin"
+                                android:layout_marginEnd="@dimen/common_half_margin"
+                                android:background="@drawable/round_button_orange"
+                                android:text="@string/about"
+                                android:textColor="@color/white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/guideline1"/>
+
+                            <ImageButton
+                                android:id="@+id/btnContact"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="@dimen/common_half_margin"
+                                android:layout_marginEnd="@dimen/common_margin"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/round_button_blue"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/guideline1"
+                                app:srcCompat="@drawable/wpbutton" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
 

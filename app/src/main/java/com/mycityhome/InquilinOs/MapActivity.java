@@ -24,7 +24,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         GoogleMap.OnInfoWindowClickListener {
 
     LatLng ubicationMadrid = new LatLng(40.4198524186511, -3.702922076154419),
-     plazaEspaña = new LatLng(40.423385, -3.712180),
+     plazaEspania = new LatLng(40.423385, -3.712180),
      catedralSantaMaria = new LatLng(40.415651, -3.714552),
      palacioReal = new LatLng(40.417955, -3.714311999999999),
      puertaAlcala = new LatLng(40.419992, -3.688737),
@@ -42,7 +42,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
      temploDebod = new LatLng(40.4240216, -3.717769499999999);
 
     LocationsMadrid[] locationsMadrid = new LocationsMadrid[]{
-            new LocationsMadrid("Plaza España", plazaEspaña),
+            new LocationsMadrid("Plaza España", plazaEspania),
             new LocationsMadrid("Catedral Santa María", catedralSantaMaria),
             new LocationsMadrid("Palacio Real", palacioReal),
             new LocationsMadrid("Museo del Prado", elPrado),

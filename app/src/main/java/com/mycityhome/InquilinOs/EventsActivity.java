@@ -8,13 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.maps.model.LatLng;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,6 +27,7 @@ import java.util.List;
 
 public class EventsActivity extends AppCompatActivity {
 
+
     private List<Event> listEvents;
     ProgressBar progressBar;
     TextView txtEvents, txtWait;
@@ -36,10 +38,11 @@ public class EventsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+        MaterialToolbar materialToolbar = (MaterialToolbar) findViewById(R.id.my_toolbar_2);
+        materialToolbar.setTitle("hola");
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
         txtEvents = findViewById(R.id.txtEvents);
-        txtEvents.setVisibility(View.INVISIBLE);
         txtWait = findViewById(R.id.txtWait);
         txtWait.setVisibility(View.VISIBLE);
         recyclerView = findViewById(R.id.recyclerView);
@@ -175,7 +178,6 @@ public class EventsActivity extends AppCompatActivity {
     public void init() {
         progressBar.setVisibility(View.INVISIBLE);
         txtWait.setVisibility(View.INVISIBLE);
-        txtEvents.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.VISIBLE);
         ListAdapter listAdapter = new ListAdapter(listEvents, this, this::moveToMap, this::goToWebsite);
         recyclerView.setAdapter(listAdapter);

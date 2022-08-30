@@ -120,4 +120,7 @@
     <string name="nextEvents">Próximos eventos</string>
     <string name="seeInMap">Ver en el mapa</string>
     <string name="goToWeb">Ir al sitio web</string>
+
+    <string name="welcome">Bienvenido</string>
+    <string name="yourStay">Para su estadía</string>
 </resources>
