@@ -40,30 +40,15 @@
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/menu/menu_lat.xml" value="0.16417272338606242" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/menu/menubar.xml" value="0.1633176571184267" />
         <entry key="..\:/Users/Asus/Documents/MyCityHome/InterfazInquilinos/app/src/main/res/mipmap-anydpi-v26/ic_mycity.xml" value="0.154" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/drawable-xxhdpi/round_button_green.xml" value="0.173" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/drawable/gradient.xml" value="0.173" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/drawable/round_button_blue.xml" value="0.173" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/drawable/round_button_bluelite.xml" value="0.173" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/drawable/round_button_orange.xml" value="0.173" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/drawable/round_button_orangelite.xml" value="0.173" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/drawable/round_button_white.xml" value="0.173" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/font/font.xml" value="0.22564102564102564" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/font/font_events.xml" value="0.22564102564102564" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/font/roboto.xml" value="0.22564102564102564" />
         <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/activity_events.xml" value="0.22" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/activity_initial.xml" value="0.22" />
+        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/activity_initial.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/activity_list_events.xml" value="0.2" />
         <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/activity_map.xml" value="0.2" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/activity_turism.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/activity_turism.xml" value="0.2" />
         <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/activity_website.xml" value="0.2" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/fragment_blank.xml" value="0.2" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/fragment_events.xml" value="0.1641025641025641" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/layout_event.xml" value="0.22" />
+        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/layout_event.xml" value="0.2" />
         <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/nav_header.xml" value="0.2" />
         <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/layout/new_layout.xml" value="0.1641025641025641" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/menu/menu.xml" value="0.2" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.12" />
-        <entry key="..\:/Users/Asus/Documents/Proyectos/JazBass/InquilinOS/app/src/main/res/mipmap-anydpi-v26/ic_mycity.xml" value="0.12" />
       </map>
     </option>
   </component>
