@@ -146,4 +146,13 @@
 
     <string name="welcome">Welcome</string>
     <string name="yourStay">For your stay</string>
+    <string name="rules_title">Rules</string>
+    <string name="rules">No smoking, no parties. \n
+        Please take out the trash to the street from 19:00h. \n
+        No noise after 11:00pm. \n
+        Respect neighbours and cleaning ladies. \n
+        Take care of everything as if it was yours. \n
+        Do not use towels or sheets from makeup removal. \n
+    </string>
+    <string name="checkout_title" translatable="false">Checkout</string>
 </resources>

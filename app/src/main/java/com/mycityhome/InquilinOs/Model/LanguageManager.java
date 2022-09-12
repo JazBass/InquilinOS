@@ -1,4 +1,4 @@
-package com.mycityhome.InquilinOs;
+package com.mycityhome.InquilinOs.Model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -30,17 +30,5 @@ public class LanguageManager {
         configuration.setLocale(locale);
         configuration.setLayoutDirection(locale);
         return context.createConfigurationContext(configuration);
-    }
-
-    @SuppressWarnings("deprecation")
-    private static Context updateResourcesLegacy(Context context, String language) {
-        Locale locale = new Locale(language);
-        Locale.setDefault(locale);
-        Resources resources = context.getResources();
-        Configuration configuration = resources.getConfiguration();
-        configuration.locale = locale;
-        configuration.setLayoutDirection(locale);
-        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-        return context;
     }
 }

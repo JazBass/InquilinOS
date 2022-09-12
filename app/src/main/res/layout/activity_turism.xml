@@ -10,6 +10,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#031059"
         android:elevation="4dp"
+        app:title="@string/events"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_constraintTop_toTopOf="parent"/>

@@ -1,4 +1,4 @@
-package com.mycityhome.InquilinOs;
+package com.mycityhome.InquilinOs.Model;
 
 import java.io.Serializable;
 
@@ -8,13 +8,12 @@ public class Event implements Serializable {
     public String[] address;
     public String latitude, longitude;
 
-    public Event(String name, String description, String url, String[] address, String stDate,
+    public Event(String name, String description, String url, String stDate,
                  String endDate, String stHour, String endHour, String latitude, String longitude,
                  String  price, String streetAddress) {
         this.name = name;
         this.description = description;
         this.url = url;
-        this.address = address;
         this.stDate = stDate;
         this.endDate = endDate;
         this.stHour = stHour;

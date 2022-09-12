@@ -140,4 +140,6 @@
 
     <string name="welcome">Bienvenu</string>
     <string name="yourStay">Votre sejour</string>
+
+    <string name="rules_title">Regles</string>
 </resources>

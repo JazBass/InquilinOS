@@ -1,4 +1,4 @@
-package com.mycityhome.InquilinOs;
+package com.mycityhome.InquilinOs.UI;
 
 import android.Manifest;
 import android.content.Intent;
@@ -19,6 +19,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.mycityhome.InquilinOs.Model.LocationsMadrid;
+import com.mycityhome.InquilinOs.Model.Event;
+import com.mycityhome.InquilinOs.R;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleMap.OnInfoWindowClickListener {

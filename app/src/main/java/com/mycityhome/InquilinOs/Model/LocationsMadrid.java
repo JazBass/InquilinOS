@@ -1,4 +1,4 @@
-package com.mycityhome.InquilinOs;
+package com.mycityhome.InquilinOs.Model;
 
 import com.google.android.gms.maps.model.LatLng;
 

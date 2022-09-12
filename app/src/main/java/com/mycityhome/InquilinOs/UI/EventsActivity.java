@@ -1,4 +1,4 @@
-package com.mycityhome.InquilinOs;
+package com.mycityhome.InquilinOs.UI;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.mycityhome.InquilinOs.Model.Event;
+import com.mycityhome.InquilinOs.R;
+import com.mycityhome.InquilinOs.UI.Fragments.WebsiteActivity;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -58,7 +60,7 @@ public class EventsActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-    //La puta que te pario Github de mierda
+            //La puta que te pario Github de mierda
         }
 
         @Override
@@ -135,7 +137,7 @@ public class EventsActivity extends AppCompatActivity {
                 }
             }
             reader.endObject();
-            return new Event(name, description, eventUrl, myAddress, dtStart, dtEnd, stHour,
+            return new Event(name, description, eventUrl, dtStart, dtEnd, stHour,
                     endHour, latitude, longitude, price, streetAddress);
         }
 
@@ -145,7 +147,7 @@ public class EventsActivity extends AppCompatActivity {
             while (reader.hasNext()) {
                 String line = reader.nextName();
                 if (line.equals("area"))
-                        address = readAddress(reader);
+                    address = readAddress(reader);
                 else
                     reader.skipValue();
             }
@@ -199,3 +201,4 @@ public class EventsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
+

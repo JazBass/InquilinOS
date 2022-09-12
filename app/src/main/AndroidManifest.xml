@@ -2,11 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mycityhome.InquilinOs">
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-feature    android:name="android.hardware.bluetooth_le" android:required="false"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" tools:ignore="ProtectedPermissions" />
     <application
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
@@ -19,7 +25,7 @@
         android:theme="@style/full_screen"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".UI.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,10 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TurismActivity"/>
-        <activity android:name=".MapActivity"/>
-        <activity android:name=".EventsActivity"/>
-        <activity android:name=".WebsiteActivity"/>
+        <activity android:name=".UI.TurismActivity"/>
+        <activity android:name=".UI.MapActivity"/>
+        <activity android:name=".UI.EventsActivity"/>
+        <activity android:name=".UI.Fragments.WebsiteActivity"/>
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA610eD8mbbxJY6A_N5nI2BWWXa9yNXoA8"/>
     </application>
 

@@ -123,4 +123,6 @@
 
     <string name="welcome">Bienvenido</string>
     <string name="yourStay">Para su estadía</string>
+
+    <string name="rules_title">Reglas</string>
 </resources>

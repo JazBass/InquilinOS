@@ -1,4 +1,4 @@
-package com.mycityhome.InquilinOs;
+package com.mycityhome.InquilinOs.UI.Fragments;
 
 import android.os.Bundle;
 
@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.mycityhome.InquilinOs.UI.MainActivity;
+import com.mycityhome.InquilinOs.R;
 
 public class BlankFragment extends Fragment implements View.OnClickListener {
 
